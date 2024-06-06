@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/yxgKFKLM/favicon-32x32.png">
+  
+  <link rel='stylesheet' href='todo-app-main.css' type='text/css'>
+  <title>Frontend Mentor | Todo app</title>
+
+  
+</head>
+<body class="dark">
+  <main class="dark">
+      <header >
+         <h1>To Do</h1>
+         <div>
+           
+         </div>
+      </header>
+      <form method="post" action="#">
+          <div class="row">
+            <div class="col-12 d-flex bg-white align-items-center">
+              <div class="decorative-circle">
+              </div>
+              <label class="visually-hidden form-label" for="enter-task">Enter a task</label>
+              <textarea class='form-control align-middle' placeholder='Create a new todo...' id="enter-task"></textarea>
+            </div>
+          </div>
+          <div class='row' id="all-tasks">
+            <!--tasks added dynamically using js-->
+          </div>
+          <p><span id='items-left'>0</span>items left</p>
+          <div class="row d-flex">
+            
+              <button id='js-active-btn' class='col-3' type='button'>Active</button>
+              <button id='js-completed-btn' class='col-3' type='button'>Completed</button>
+              <button class='col-6' type='button'>Clear Completed</button>
+            
+          </div>
+      </form>
+      <input type="checkbox">
+      
+      
+  </main>
+  
+  <footer id='bottom-footer'>
+    <div class="attribution mt-5">
+           <span class='me-2'>Challenge by</span><address><a class='me-2' href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a></address>
+           <span class='me-2'>Coded by</span><address><a href="https://www.frontendmentor.io/profile/cmb347827">CMB</a></address>
+    </div>
+  </footer>	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src='todo-app-main.js'></script>
+</body>
+</html>

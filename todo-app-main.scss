@@ -1,0 +1,112 @@
+@import 'custom.scss';
+@import '_globals.scss';
+
+$colors: (
+  White: hsl(0, 0%, 100%),
+  Black: hsl(0, 0%, 0%),
+  Dark Gray: hsl(0, 0%, 55%),
+ 
+);
+$fallback-colors: (
+  White Black #999999 
+);
+
+@mixin font-color($color, $fallback-color) {
+  color: $fallback-color;
+  color: $color;
+}
+
+@mixin bg-color($color, $fallback-color) {
+  background-color: $fallback-color;
+  background-color: $color;
+}
+
+
+@mixin border-radius($radius...) {
+  border-radius: $radius;
+}
+@mixin margin($args...) {
+  margin: $args;
+}
+@mixin padding($args...) {
+  padding: $args;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+
+body.dark {
+  background:map-get($colors,Dark Gray) url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat;
+  font: {
+     //default 16 px/1rem.
+     size: 100%; 
+     weight: $font_weight-normal;
+     
+  }
+  @include media-breakpoint-up(xxl){
+    background:map-get($colors,Dark Gray) url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat;
+  }
+}
+
+.top-z-index{
+  //needed for z-index.
+  position: relative;
+  z-index: 1;
+  opacity:1;
+}
+.decorative-circle{
+  width:25px;
+  height: 25px;
+  border: 2px solid gray;
+  border-radius: 50%;
+  margin: auto;
+}
+
+header{
+  @include margin(100px 0);
+}
+
+
+main{
+  width:$container__form-xs;
+  @include margin(0 auto); 
+  margin-top: 20px;
+  z-index:1;
+  
+  form{
+     textarea{
+       border:none;
+     }
+     @include media-breakpoint-up(xxl){
+        
+     }
+  }
+ 
+  @include media-breakpoint-up(xxl){
+    
+    margin-top: -300px;
+     width: $container__form-xxl;
+     @include padding(150px);
+     > section, > div:not(#success-message){
+          width:$container__form-l;
+          @include margin(50px auto);
+     }
+  }
+  
+}
+
+
+#bottom-footer {
+.attribution {
+  font-size: $font_size-8;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+}
+
