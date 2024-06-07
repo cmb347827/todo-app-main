@@ -8,6 +8,7 @@ const tasksDiv = document.getElementById("all-tasks");
 const newTaskTextArea = document.getElementById('enter-task');
 const completedBtn = document.getElementById('js-completed-btn');
 const activeBtn = document.getElementById('js-active-btn');
+const clearCompleted = document.getElementById('js-delete-completed-btn');
 
 let taskData = JSON.parse(localStorage.getItem("tasks")) || [];
 let activeTasks=  [];
@@ -106,6 +107,21 @@ activeBtn.addEventListener('click',()=>{
     taskActions('active-tasks',isNotChecked,activeTasks);
     activeTasks = JSON.parse(localStorage.getItem("active-tasks"));
     updateTaskContainer(activeTasks);
+});
+
+const clearTodo=()=>{
+    taskData=taskData.filter((task)=>{
+        if(task.checked===false){
+          return task;
+        }
+    });
+    localStorage.setItem("tasks", JSON.stringify(taskData));
+}
+clearCompleted.addEventListener('click',()=>{
+    completedTasks=[];
+    localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));
+    clearTodo();
+    updateTaskContainer(taskData);
 });
 
 const updateTaskContainer = (data) => {
