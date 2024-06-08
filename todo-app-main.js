@@ -121,7 +121,7 @@ clearCompleted.addEventListener('click',()=>{
     completedTasks=[];
     localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));
     clearTodo();
-    updateTaskContainer(taskData);
+    updateTaskContainer(completedTasks);
 });
 
 const updateTaskContainer = (data) => {
