@@ -67,34 +67,43 @@ body.dark {
 }
 
 header{
-  @include margin(100px 0);
+  width:$container__form-xs;
+  @include margin(100px auto);
+  @include media-breakpoint-up(xxl){
+     width: 600px;
+  }
 }
 
 
 main{
   width:$container__form-xs;
-  @include margin(0 auto); 
+  @include margin(100px auto);
   margin-top: 20px;
   z-index:1;
   
+  
   form{
+    @include margin(0 auto); 
+    #tab-grid{
+      display: grid; 
+      grid-gap: 10px; 
+      grid-template-columns: repeat(4, 1fr);
+    }
      textarea{
        border:none;
      }
      @include media-breakpoint-up(xxl){
-        
+        width: 600px;
      }
   }
- 
+  @include media-breakpoint-up(xl){
+
+  }
   @include media-breakpoint-up(xxl){
+    width: $container__form-xxl;
+    margin-top: -100px;
     
-    margin-top: -300px;
-     width: $container__form-xxl;
-     @include padding(150px);
-     > section, > div:not(#success-message){
-          width:$container__form-l;
-          @include margin(50px auto);
-     }
+     
   }
   
 }
@@ -109,4 +118,3 @@ main{
   color: hsl(228, 45%, 44%);
 }
 }
-

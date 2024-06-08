@@ -9,6 +9,7 @@ const newTaskTextArea = document.getElementById('enter-task');
 const completedBtn = document.getElementById('js-completed-btn');
 const activeBtn = document.getElementById('js-active-btn');
 const clearCompleted = document.getElementById('js-delete-completed-btn');
+const allBtn=document.getElementById('js-all-btn');
 
 let taskData = JSON.parse(localStorage.getItem("tasks")) || [];
 let activeTasks=  [];
@@ -91,22 +92,32 @@ function setRemoveChecked(event){
     localStorage.setItem('tasks', JSON.stringify(taskData));
     console.log('taskdata',taskData);
 }
+allBtn.addEventListener('click',(e)=>{
+   e.currentTarget.setAttribute('aria-selected','true');
+   updateTaskContainer(taskData);
+   e.currentTarget.blur();
+});
 
-completedBtn.addEventListener('click',()=>{
+
+completedBtn.addEventListener('click',(e)=>{
+   e.currentTarget.setAttribute('aria-selected','true');
    completedTasks=[];
    taskActions('completed-tasks',isChecked,completedTasks);
    completedTasks=JSON.parse(localStorage.getItem("completed-tasks"));
    updateTaskContainer(completedTasks);
+   e.currentTarget.blur();
 });
 
 const isChecked=(inputEl)=>inputEl.checked;
 const isNotChecked=(inputEl)=>!inputEl.checked;
 
-activeBtn.addEventListener('click',()=>{
+activeBtn.addEventListener('click',(e)=>{
+    e.currentTarget.setAttribute('aria-selected','true');
     activeTasks=[];
     taskActions('active-tasks',isNotChecked,activeTasks);
     activeTasks = JSON.parse(localStorage.getItem("active-tasks"));
     updateTaskContainer(activeTasks);
+    e.currentTarget.blur();
 });
 
 const clearTodo=()=>{
@@ -117,11 +128,14 @@ const clearTodo=()=>{
     });
     localStorage.setItem("tasks", JSON.stringify(taskData));
 }
-clearCompleted.addEventListener('click',()=>{
+
+clearCompleted.addEventListener('click',(e)=>{
+    e.currentTarget.setAttribute('aria-selected','true');
     completedTasks=[];
     localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));
     clearTodo();
     updateTaskContainer(completedTasks);
+    e.currentTarget.blur();
 });
 
 const updateTaskContainer = (data) => {

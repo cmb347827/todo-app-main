@@ -12926,23 +12926,32 @@ body.dark {
   margin: auto; }
 
 header {
-  margin: 100px 0; }
+  width: 375px;
+  margin: 100px auto; }
+  @media (min-width: 1440px) {
+    header {
+      width: 600px; } }
 
 main {
   width: 375px;
-  margin: 0 auto;
+  margin: 100px auto;
   margin-top: 20px;
   z-index: 1; }
-  main form textarea {
-    border: none; }
+  main form {
+    margin: 0 auto; }
+    main form #tab-grid {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(4, 1fr); }
+    main form textarea {
+      border: none; }
+    @media (min-width: 1440px) {
+      main form {
+        width: 600px; } }
   @media (min-width: 1440px) {
     main {
-      margin-top: -300px;
       width: 1440px;
-      padding: 150px; }
-      main > section, main > div:not(#success-message) {
-        width: 992px;
-        margin: 50px auto; } }
+      margin-top: -100px; } }
 
 #bottom-footer .attribution {
   font-size: 8px;

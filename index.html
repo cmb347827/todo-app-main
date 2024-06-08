@@ -13,33 +13,45 @@
 <body class="dark">
   <main class="dark">
       <header >
-         <h1>To Do</h1>
+         <h1 class="text-white ">To Do</h1>
          <div>
            
          </div>
       </header>
       <form method="post" action="#">
-          <div class="row">
-            <div class="col-12 d-flex bg-white align-items-center">
+          <div class="">
+            <div class=" d-flex bg-white align-items-center">
               <div class="decorative-circle">
               </div>
               <label class="visually-hidden form-label" for="enter-task">Enter a task</label>
               <textarea class='form-control align-middle' placeholder='Create a new todo...' id="enter-task"></textarea>
             </div>
           </div>
-          <div class='row' id="all-tasks">
+          <div id="all-tasks">
             <!--tasks added dynamically using js-->
           </div>
-          <p><span id='items-left'>0</span>items left</p>
-          <div class="row d-flex">
-            
-              <button id='js-active-btn' class='col-3' type='button'>Active</button>
-              <button id='js-completed-btn' class='col-3' type='button'>Completed</button>
-              <button id='js-delete-completed-btn' class='col-6' type='button'>Clear Completed</button>
-            
-          </div>
+          <div class="d-flex">
+              <p class=" text-white"><span id='items-left'>0</span>items left</p>
+              <ul id='tab-grid' class=" nav nav-tabs">
+                      <li aria-label='All' aria-selected='false' class=" nav-item ">
+                        <button id="js-all-btn" type="button">All</button>
+                      </li>
+                      <li aria-label='Active' aria-selected='false' class=" nav-item">
+                        <button id='js-active-btn' type='button'>Active</button>
+                      </li>
+                      <li aria-label='Completed' aria-selected='false' class=" nav-item">
+                        <button id='js-completed-btn' type='button'>Completed</button>
+                      </li>
+                      <li aria-label='Clear completed' aria-selected='false' class=" nav-item ">
+                        <button id='js-delete-completed-btn' type='button'>Clear Completed</button>
+                      </li>
+              </ul>
+          </div> 
+              
+              
+              
+        
       </form>
-      <input type="checkbox">
       
       
   </main>
