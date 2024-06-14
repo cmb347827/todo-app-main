@@ -32,26 +32,70 @@ $fallback-colors: (
   padding: $args;
 }
 
+.hide{
+   display:none;
+}
+.show{
+   display: block;
+}
+.positionBtn{
+  position:absolute;
+  right:0;
+  top: 5px;
+}
+
+.dark{
+    body{
+       background-color:black;
+       color:white;
+    }
+    button{
+       color: white;
+    }
+    main{
+        background: url(./images/bg-mobile-dark.jpg) top center/100% 30% fixed no-repeat ;
+        @include media-breakpoint-up(xxl){
+            background: url(./images/bg-desktop-dark.jpg) top center/100% 50% fixed no-repeat ;
+        }
+      
+    }
+}
+.light{
+  body{
+      background-color:white;
+      color:black;
+  }
+  button{
+      color: black;
+  }
+  main{
+      background: url(./images/bg-mobile-light.jpg) top center/100% 30% fixed no-repeat ;
+      @include media-breakpoint-up(xxl){
+          background: url(./images/bg-desktop-light.jpg) top center/100% 50% fixed no-repeat ;
+      }
+    
+  }
+}
+html{
+  box-sizing: border-box; 
+}
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
-
-
-body.dark {
-  background:map-get($colors,Dark Gray) url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat;
+body{
+  /*position: relative;        
+  min-height: 100%;         
+  padding-bottom: 6rem;*/
+  
   font: {
-     //default 16 px/1rem.
-     size: 100%; 
-     weight: $font_weight-normal;
-     
-  }
-  @include media-breakpoint-up(xxl){
-    background:map-get($colors,Dark Gray) url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat;
+    //default 16 px/1rem.
+    size: 100%; 
+    weight: $font_weight-normal;
+    
   }
 }
-
 .top-z-index{
   //needed for z-index.
   position: relative;
@@ -66,55 +110,39 @@ body.dark {
   margin: auto;
 }
 
-header{
-  width:$container__form-xs;
-  @include margin(100px auto);
-  @include media-breakpoint-up(xxl){
-     width: 600px;
-  }
-}
 
-
-main{
-  width:$container__form-xs;
-  @include margin(100px auto);
-  margin-top: 20px;
-  z-index:1;
-  
-  
-  form{
-    @include margin(0 auto); 
-    #tab-grid{
-      display: grid; 
-      grid-gap: 10px; 
-      grid-template-columns: repeat(4, 1fr);
+main{ 
+    position:relative;
+    .container{
+      /*position: -webkit-sticky;
+      position: sticky;
+      top: 10px;*/
+      
+      form{
+         
+          transform: translate(50%, 50%); 
+          
+          header{
+           height: 100px;
+          }
+         
+      }
     }
-     textarea{
-       border:none;
-     }
-     @include media-breakpoint-up(xxl){
-        width: 600px;
-     }
-  }
-  @include media-breakpoint-up(xl){
-
-  }
-  @include media-breakpoint-up(xxl){
-    width: $container__form-xxl;
-    margin-top: -100px;
-    
-     
-  }
-  
 }
 
 
 #bottom-footer {
-.attribution {
-  font-size: $font_size-8;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
+  
+   position: absolute;        
+  margin-top: 10rem;
+  left:48%;
+  height: 2.5rem;  
+
+  .attribution {
+    font-size: $font_size-8;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
 }

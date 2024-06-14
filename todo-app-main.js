@@ -6,10 +6,14 @@ $(window).resize(function(){
 
 const tasksDiv = document.getElementById("all-tasks");
 const newTaskTextArea = document.getElementById('enter-task');
+const itemsLeft=document.getElementById('js-items-left');
 const completedBtn = document.getElementById('js-completed-btn');
 const activeBtn = document.getElementById('js-active-btn');
 const clearCompleted = document.getElementById('js-delete-completed-btn');
 const allBtn=document.getElementById('js-all-btn');
+const lightBtn=document.getElementById('js-light-btn');
+const darkBtn = document.getElementById('js-dark-btn');
+const html =document.querySelector('html');
 
 let taskData = JSON.parse(localStorage.getItem("tasks")) || [];
 let activeTasks=  [];
@@ -92,6 +96,8 @@ function setRemoveChecked(event){
     localStorage.setItem('tasks', JSON.stringify(taskData));
     console.log('taskdata',taskData);
 }
+
+
 allBtn.addEventListener('click',(e)=>{
    e.currentTarget.setAttribute('aria-selected','true');
    updateTaskContainer(taskData);
@@ -139,11 +145,10 @@ clearCompleted.addEventListener('click',(e)=>{
 });
 
 const updateTaskContainer = (data) => {
-    console.log('in update',data);
+    itemsLeft.textContent = activeTasks.length;
     let which;
     tasksDiv.innerHTML = "";
     if(data){
-      
       data.forEach(
           ({ taskId, task ,checked}) => {
                    if(checked){
@@ -152,7 +157,8 @@ const updateTaskContainer = (data) => {
                     which='';
                    }
                   (tasksDiv.innerHTML += `
-                        <div class="d-flex bg-white" id="${taskId}">
+                        <div class="d-flex bg-white " id="${taskId}">
+                          <label class='visually-hidden'>Check or uncheck task</label>
                           <input onchange='setRemoveChecked(event)' class="form-check-input" type="checkbox" ${which} >
                           <textarea class="form-control">${task}</textarea>
                         </div>
@@ -160,17 +166,56 @@ const updateTaskContainer = (data) => {
           }
         
       );
-    }else{
-       //reload full task list
-
     }
     
-  };
-  
-  
+};
+lightBtn.addEventListener('click',()=>{
+    if($(darkBtn).hasClass('hide')){
+      $(darkBtn).removeClass('hide');
+      $(lightBtn).addClass('hide');
+    }
+    if($(lightBtn).hasClass('show')){
+      $(lightBtn).removeClass('show');
+      $(darkBtn).addClass('show');
+    }
+    if($(html).hasClass('dark')){
+      $(html).removeClass('dark');
+      $(html).addClass('light');
+    }
+      darkBtn.disable=false;
+      darkBtn.setAttribute('aria-hidden','false');
+      darkBtn.setAttribute('aria-disabled','false');
+
+      lightBtn.disable=true;
+      lightBtn.setAttribute('aria-hidden','true');
+      lightBtn.setAttribute('aria-disabled','true');
+});
+
+darkBtn.addEventListener('click',()=>{  //has hide.
+      if($(lightBtn).hasClass('hide')){
+        $(lightBtn).removeClass('hide');
+        $(darkBtn).addClass('hide');
+      }
+      if($(darkBtn).hasClass('show')){
+        $(darkBtn).removeClass('show');
+        $(lightBtn).addClass('show');
+      }
+      if($(html).hasClass('light')){
+        $(html).removeClass('light');
+        $(html).addClass('dark');
+      }
+       lightBtn.disable=false;
+       lightBtn.setAttribute('aria-hidden','false');
+       lightBtn.setAttribute('aria-disabled','false');
+
+       $(darkBtn).disable=true;
+       darkBtn.setAttribute('aria-hidden','true');
+       darkBtn.setAttribute('aria-disabled','true');
+});
+
 $(window).on('load',function(){
     clearLocalStorage();
 	  updateTaskContainer(taskData);
+    Sortable.create(tasksDiv);
     
-   
 });

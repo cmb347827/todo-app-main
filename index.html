@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark"  lang="en" >
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
@@ -10,61 +10,63 @@
 
   
 </head>
-<body class="dark">
-  <main class="dark">
-      <header >
-         <h1 class="text-white ">To Do</h1>
-         <div>
-           
-         </div>
-      </header>
-      <form method="post" action="#">
-          <div class="">
-            <div class=" d-flex bg-white align-items-center">
-              <div class="decorative-circle">
+<body   dir="ltr">
+  <main>
+        <div class="container sticky-top">
+          <form class='row w-50 ' method="post" action="#">
+              <header class="col-12 ">
+                <div class="d-flex justify-content-between">
+                    <h1 class="text-white">To Do</h1>
+                    <div class="">
+                      <button id='js-dark-btn' class='btn hide ' type='button'><svg class='dark  positionBtn' xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/></svg></button>
+                      <button id='js-light-btn' class='btn ' type='button'><svg  class='light positionBtn' xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"/></svg></button>
+                    </div>
+                </div>
+              </header>
+              <div class="col-12 mb-2 ">
+                  <div class=" d-flex bg-white align-items-center">
+                    <div class="decorative-circle">
+                    </div>
+                    <label class="visually-hidden form-label" for="enter-task">Enter a task</label>
+                    <textarea class='form-control align-middle' placeholder='Create a new todo...' id="enter-task"></textarea>
+                  </div>
               </div>
-              <label class="visually-hidden form-label" for="enter-task">Enter a task</label>
-              <textarea class='form-control align-middle' placeholder='Create a new todo...' id="enter-task"></textarea>
-            </div>
-          </div>
-          <div id="all-tasks">
-            <!--tasks added dynamically using js-->
-          </div>
-          <div class="d-flex">
-              <p class=" text-white"><span id='items-left'>0</span>items left</p>
-              <ul id='tab-grid' class=" nav nav-tabs">
-                      <li aria-label='All' aria-selected='false' class=" nav-item ">
-                        <button id="js-all-btn" type="button">All</button>
-                      </li>
-                      <li aria-label='Active' aria-selected='false' class=" nav-item">
-                        <button id='js-active-btn' type='button'>Active</button>
-                      </li>
-                      <li aria-label='Completed' aria-selected='false' class=" nav-item">
-                        <button id='js-completed-btn' type='button'>Completed</button>
-                      </li>
-                      <li aria-label='Clear completed' aria-selected='false' class=" nav-item ">
-                        <button id='js-delete-completed-btn' type='button'>Clear Completed</button>
-                      </li>
-              </ul>
-          </div> 
-              
-              
-              
-        
-      </form>
-      
-      
+              <div class='col-12' id="all-tasks">
+                <!--tasks added dynamically using js-->
+              </div>
+              <div class="col-12 ">
+                  <div class="d-flex justify-content-between">
+                    <p class=" text-white me-xxl-2 me-1"><span id='js-items-left'>0</span> items left</p>
+                    <ul class="nav nav-tabs  ">
+                            <li aria-selected='false' class="nav-item ">
+                              <button class='btn ' id="js-all-btn" type="button">All</button>
+                            </li>
+                            <li  aria-selected='false' class=" nav-item">
+                              <button class='btn ' id='js-active-btn' type='button'>Active</button>
+                            </li>
+                            <li  aria-selected='false' class=" nav-item">
+                              <button class='btn ' id='js-completed-btn' type='button'>Completed</button>
+                            </li>
+                            <li aria-selected='false' class=" nav-item ">
+                              <button class='btn ' id='js-delete-completed-btn' type='button'>Clear Completed</button>
+                            </li>
+                    </ul>
+                  </div>
+              </div> 
+          </form>
+       </div>
   </main>
-  
   <footer id='bottom-footer'>
-    <div class="attribution mt-5">
+    <div class="attribution ">
            <span class='me-2'>Challenge by</span><address><a class='me-2' href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a></address>
            <span class='me-2'>Coded by</span><address><a href="https://www.frontendmentor.io/profile/cmb347827">CMB</a></address>
     </div>
   </footer>	
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js" integrity="sha512-TelkP3PCMJv+viMWynjKcvLsQzx6dJHvIGhfqzFtZKgAjKM1YPqcwzzDEoTc/BHjf43PcPzTQOjuTr4YdE8lNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src='todo-app-main.js'></script>
 </body>
 </html>

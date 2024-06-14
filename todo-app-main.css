@@ -12900,18 +12900,53 @@ textarea.form-control-lg {
 
   .d-print-none {
     display: none !important; } }
+.hide {
+  display: none; }
+
+.show {
+  display: block; }
+
+.positionBtn {
+  position: absolute;
+  right: 0;
+  top: 5px; }
+
+.dark body {
+  background-color: black;
+  color: white; }
+.dark button {
+  color: white; }
+.dark main {
+  background: url(./images/bg-mobile-dark.jpg) top center/100% 30% fixed no-repeat; }
+  @media (min-width: 1440px) {
+    .dark main {
+      background: url(./images/bg-desktop-dark.jpg) top center/100% 50% fixed no-repeat; } }
+
+.light body {
+  background-color: white;
+  color: black; }
+.light button {
+  color: black; }
+.light main {
+  background: url(./images/bg-mobile-light.jpg) top center/100% 30% fixed no-repeat; }
+  @media (min-width: 1440px) {
+    .light main {
+      background: url(./images/bg-desktop-light.jpg) top center/100% 50% fixed no-repeat; } }
+
+html {
+  box-sizing: border-box; }
+
 *,
 ::before,
 ::after {
-  box-sizing: border-box; }
+  box-sizing: inherit; }
 
-body.dark {
-  background: #8c8c8c url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat;
+body {
+  /*position: relative;        
+  min-height: 100%;         
+  padding-bottom: 6rem;*/
   font-size: 100%;
   font-weight: 400; }
-  @media (min-width: 1440px) {
-    body.dark {
-      background: #8c8c8c url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat; } }
 
 .top-z-index {
   position: relative;
@@ -12925,38 +12960,26 @@ body.dark {
   border-radius: 50%;
   margin: auto; }
 
-header {
-  width: 375px;
-  margin: 100px auto; }
-  @media (min-width: 1440px) {
-    header {
-      width: 600px; } }
-
 main {
-  width: 375px;
-  margin: 100px auto;
-  margin-top: 20px;
-  z-index: 1; }
-  main form {
-    margin: 0 auto; }
-    main form #tab-grid {
-      display: grid;
-      grid-gap: 10px;
-      grid-template-columns: repeat(4, 1fr); }
-    main form textarea {
-      border: none; }
-    @media (min-width: 1440px) {
-      main form {
-        width: 600px; } }
-  @media (min-width: 1440px) {
-    main {
-      width: 1440px;
-      margin-top: -100px; } }
+  position: relative; }
+  main .container {
+    /*position: -webkit-sticky;
+    position: sticky;
+    top: 10px;*/ }
+    main .container form {
+      transform: translate(50%, 50%); }
+      main .container form header {
+        height: 100px; }
 
-#bottom-footer .attribution {
-  font-size: 8px;
-  text-align: center; }
-#bottom-footer .attribution a {
-  color: #3e52a3; }
+#bottom-footer {
+  position: absolute;
+  margin-top: 10rem;
+  left: 48%;
+  height: 2.5rem; }
+  #bottom-footer .attribution {
+    font-size: 8px;
+    text-align: center; }
+  #bottom-footer .attribution a {
+    color: #3e52a3; }
 
 /*# sourceMappingURL=todo-app-main.css.map */
