@@ -1,14 +1,27 @@
 @import 'custom.scss';
 @import '_globals.scss';
 
-$colors: (
-  White: hsl(0, 0%, 100%),
-  Black: hsl(0, 0%, 0%),
-  Dark Gray: hsl(0, 0%, 55%),
- 
+$light-colors: (
+  Very Light Gray: hsl(0, 0%, 98%),
+  Very Light Grayish Blue: hsl(236, 33%, 92%),
+  Light Grayish Blue: hsl(233, 11%, 84%),
+  Dark Grayish Blue: hsl(236, 9%, 61%),
+  Very Dark Grayish Blue: hsl(235, 19%, 35%)
 );
-$fallback-colors: (
-  White Black #999999 
+$fallback-colors-light: (
+  Gray99, Gray87 , Gray82, Gray44, SteelBlue4 
+);
+$dark-colors:(
+  Very Dark Blue: hsl(235, 21%, 11%),
+  Very Dark Desaturated Blue: hsl(235, 24%, 19%),
+  Light Grayish Blue: hsl(234, 39%, 85%),
+  Light Grayish Blue (hover): hsl(236, 33%, 92%),
+  Dark Grayish Blue: hsl(234, 11%, 52%),
+  Very Dark Grayish Blue1: hsl(233, 14%, 35%),
+  Very Dark Grayish Blue2: hsl(237, 14%, 26%)
+);
+$fallback-colors-dark: (
+   'Oxford Blue', 'Deep Space Sparkle', Crystal, Cerulean, Charcoal ,RoyalBlue4, 'Prussian Blue'
 );
 
 @mixin font-color($color, $fallback-color) {
@@ -31,7 +44,15 @@ $fallback-colors: (
 @mixin padding($args...) {
   padding: $args;
 }
+.show-error{
+  position:relative;
+  left:0;
+  color:red;
 
+}
+.hide-error{
+   display:none;
+}
 .hide{
    display:none;
 }
@@ -46,7 +67,7 @@ $fallback-colors: (
 
 .dark{
     body{
-       background-color:black;
+      @include bg-color(map-get($dark-colors,Very Dark Grayish Blue2),nth($fallback-colors-dark,7));
        color:white;
     }
     button{
@@ -119,8 +140,8 @@ main{
       top: 10px;*/
       
       form{
-         
-          transform: translate(50%, 50%); 
+        
+          transform: translate(50%, 51%); 
           
           header{
            height: 100px;

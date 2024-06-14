@@ -12900,6 +12900,14 @@ textarea.form-control-lg {
 
   .d-print-none {
     display: none !important; } }
+.show-error {
+  position: relative;
+  left: 0;
+  color: red; }
+
+.hide-error {
+  display: none; }
+
 .hide {
   display: none; }
 
@@ -12912,7 +12920,8 @@ textarea.form-control-lg {
   top: 5px; }
 
 .dark body {
-  background-color: black;
+  background-color: "Prussian Blue";
+  background-color: #393a4c;
   color: white; }
 .dark button {
   color: white; }
@@ -12967,7 +12976,7 @@ main {
     position: sticky;
     top: 10px;*/ }
     main .container form {
-      transform: translate(50%, 50%); }
+      transform: translate(50%, 51%); }
       main .container form header {
         height: 100px; }
 

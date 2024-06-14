@@ -11,9 +11,11 @@ const completedBtn = document.getElementById('js-completed-btn');
 const activeBtn = document.getElementById('js-active-btn');
 const clearCompleted = document.getElementById('js-delete-completed-btn');
 const allBtn=document.getElementById('js-all-btn');
+const cross = document.getElementById('delete-task');
 const lightBtn=document.getElementById('js-light-btn');
 const darkBtn = document.getElementById('js-dark-btn');
 const html =document.querySelector('html');
+const errBlank= document.getElementById('blank-error'); 
 
 let taskData = JSON.parse(localStorage.getItem("tasks")) || [];
 let activeTasks=  [];
@@ -37,12 +39,17 @@ function uuidv4() {
 
 
 newTaskTextArea.addEventListener('keydown', (event) => {
+  
   const regex = /\S/;
   //prevents the user from entering nothing 
   let passed = regex.test(newTaskTextArea.value);
   //user presses enter key , 
   if (event.key === 'Enter' && passed) {
-      //on user presses the enter key in 'create a new todo' textarea, get the new todo textarea value.
+        if($('#blank-error').hasClass('show-error')){
+            $('#blank-error').removeClass('show-error');
+            $('#blank-error').addClass('hide-error');
+        }
+        //on user presses the enter key in 'create a new todo' textarea, get the new todo textarea value.
         const newTaskValue =newTaskTextArea.value.trim();
         if(newTaskValue){
             const newTask ={
@@ -55,8 +62,18 @@ newTaskTextArea.addEventListener('keydown', (event) => {
             localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
             updateTaskContainer(taskData);
         }
-        
+  }else if(event.key ==='Enter' && !passed){
+     console.log('in 1');
+     //$(errBlank).addClass('show');
+     console.log(errBlank.classList);
+     console.log($('#blank-error').hasClass==='hide-error','...',$('#blank-error').hasClass==='show-error');
+     if($('#blank-error').hasClass('hide-error')){
+        console.log('in 2');
+        $('#blank-error').removeClass('hide-error');
+        $('#blank-error').addClass('show-error');
+     }
   }
+
 });
 
 function getInputArray(which){
@@ -149,7 +166,9 @@ clearCompleted.addEventListener('click',(e)=>{
 });
 
 const updateTaskContainer = (data) => {
-    itemsLeft.textContent = activeTasks.length;
+    const activeArr= taskData.filter(isNotChecked);
+    itemsLeft.textContent = activeArr.length;
+    
     let which;
     tasksDiv.innerHTML = "";
     if(data){
@@ -165,6 +184,7 @@ const updateTaskContainer = (data) => {
                           <label class='visually-hidden'>Check or uncheck task</label>
                           <input onchange='setRemoveChecked(event)' class="form-check-input" type="checkbox" ${which} >
                           <textarea class="form-control">${task}</textarea>
+                          <svg id='delete-task' xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
                         </div>
                  `)
           }
