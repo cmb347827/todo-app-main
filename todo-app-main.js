@@ -37,21 +37,25 @@ function uuidv4() {
 
 
 newTaskTextArea.addEventListener('keydown', (event) => {
+  const regex = /\S/;
+  //prevents the user from entering nothing 
+  let passed = regex.test(newTaskTextArea.value);
   //user presses enter key , 
-  if (event.key === 'Enter') {
+  if (event.key === 'Enter' && passed) {
       //on user presses the enter key in 'create a new todo' textarea, get the new todo textarea value.
-     let newTaskValue = newTaskTextArea.value;
-     const newTask ={
-        taskId: Date.now(),
-        task: newTaskValue,
-        checked: false,
-     }
-     taskData.unshift(newTask);
-     newTaskTextArea.value='';
-     localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
-     
-     updateTaskContainer(taskData);
-     
+        const newTaskValue =newTaskTextArea.value.trim();
+        if(newTaskValue){
+            const newTask ={
+                taskId: Date.now(),
+                task: newTaskValue,
+                checked: false,
+            }
+            taskData.unshift(newTask);
+            newTaskTextArea.value='';
+            localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
+            updateTaskContainer(taskData);
+        }
+        
   }
 });
 
