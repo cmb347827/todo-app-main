@@ -137,12 +137,14 @@ body{
 main{ 
     
       form{
-          position:relative;
-          top:-4rem;
 
           #form-body,#form-header{
             max-width: 85%;
             @include margin(0 auto);
+          }
+          #form-body{
+            position:relative;
+            top:-3rem;
           }
           #form-header{
             height: 15rem;

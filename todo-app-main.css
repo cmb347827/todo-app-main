@@ -12969,14 +12969,14 @@ body {
   border-radius: 50%;
   margin: auto; }
 
-main form {
+main form #form-body, main form #form-header {
+  max-width: 85%;
+  margin: 0 auto; }
+main form #form-body {
   position: relative;
-  top: -4rem; }
-  main form #form-body, main form #form-header {
-    max-width: 85%;
-    margin: 0 auto; }
-  main form #form-header {
-    height: 15rem; }
+  top: -3rem; }
+main form #form-header {
+  height: 15rem; }
 
 #bottom-footer .attribution {
   font-size: 8px;
