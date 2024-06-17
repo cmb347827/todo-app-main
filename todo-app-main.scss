@@ -14,8 +14,8 @@ $fallback-colors-light: (
 $dark-colors:(
   Very Dark Blue: hsl(235, 21%, 11%),
   Very Dark Desaturated Blue: hsl(235, 24%, 19%),
-  Light Grayish Blue: hsl(234, 39%, 85%),
-  Light Grayish Blue (hover): hsl(236, 33%, 92%),
+  Light Grayish Blue1: hsl(234, 39%, 85%),
+  Light Grayish Blue2 (hover): hsl(236, 33%, 92%),
   Dark Grayish Blue: hsl(234, 11%, 52%),
   Very Dark Grayish Blue1: hsl(233, 14%, 35%),
   Very Dark Grayish Blue2: hsl(237, 14%, 26%)
@@ -59,43 +59,48 @@ $fallback-colors-dark: (
 .show{
    display: block;
 }
-.positionBtn{
-  position:absolute;
-  right:0;
-  top: 5px;
-}
 
 .dark{
     body{
       @include bg-color(map-get($dark-colors,Very Dark Grayish Blue2),nth($fallback-colors-dark,7));
-       color:white;
+      @include font-color(map-get($dark-colors,Light Grayish Blue1),nth($fallback-colors-dark,3));
+       form {
+          border:none;
+          border-bottom: 1px solid white;
+          > div{
+            @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
+            @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+          }
+       }
+       
+      
     }
     button{
        color: white;
     }
-    main{
-        background: url(./images/bg-mobile-dark.jpg) top center/100% 30% fixed no-repeat ;
+    header{
+        background: url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat ;
         @include media-breakpoint-up(xxl){
-            background: url(./images/bg-desktop-dark.jpg) top center/100% 50% fixed no-repeat ;
+            background: url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat ;
         }
       
     }
 }
 .light{
-  body{
-      background-color:white;
-      color:black;
-  }
-  button{
-      color: black;
-  }
-  main{
-      background: url(./images/bg-mobile-light.jpg) top center/100% 30% fixed no-repeat ;
-      @include media-breakpoint-up(xxl){
-          background: url(./images/bg-desktop-light.jpg) top center/100% 50% fixed no-repeat ;
-      }
-    
-  }
+    body{
+        background-color:white;
+        color:black;
+    }
+    button{
+        color: black;
+    }
+    header{
+        background: url(./images/bg-mobile-light.jpg) top center/100% 100% no-repeat ;
+        @include media-breakpoint-up(xxl){
+            background: url(./images/bg-desktop-light.jpg) top center/100% 100% no-repeat ;
+        }
+      
+    }
 }
 html{
   box-sizing: border-box; 
@@ -106,13 +111,10 @@ html{
   box-sizing: inherit;
 }
 body{
-  /*position: relative;        
-  min-height: 100%;         
-  padding-bottom: 6rem;*/
   
   font: {
     //default 16 px/1rem.
-    size: 100%; 
+    size: 1rem;
     weight: $font_weight-normal;
     
   }
@@ -133,32 +135,25 @@ body{
 
 
 main{ 
-    position:relative;
-    .container{
-      /*position: -webkit-sticky;
-      position: sticky;
-      top: 10px;*/
-      
+    
       form{
-        
-          transform: translate(50%, 51%); 
-          
-          header{
-           height: 100px;
+          position:relative;
+          top:-4rem;
+
+          #form-body,#form-header{
+            max-width: 85%;
+            @include margin(0 auto);
+          }
+          #form-header{
+            height: 15rem;
           }
          
       }
-    }
+    
 }
 
 
 #bottom-footer {
-  
-   position: absolute;        
-  margin-top: 10rem;
-  left:48%;
-  height: 2.5rem;  
-
   .attribution {
     font-size: $font_size-8;
     text-align: center;

@@ -12914,33 +12914,36 @@ textarea.form-control-lg {
 .show {
   display: block; }
 
-.positionBtn {
-  position: absolute;
-  right: 0;
-  top: 5px; }
-
 .dark body {
   background-color: "Prussian Blue";
   background-color: #393a4c;
-  color: white; }
+  color: Crystal;
+  color: #cacde8; }
+  .dark body form {
+    border: none;
+    border-bottom: 1px solid white; }
+    .dark body form > div {
+      background-color: RoyalBlue4;
+      background-color: #4d5066;
+      color: Cerulean; }
 .dark button {
   color: white; }
-.dark main {
-  background: url(./images/bg-mobile-dark.jpg) top center/100% 30% fixed no-repeat; }
+.dark header {
+  background: url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat; }
   @media (min-width: 1440px) {
-    .dark main {
-      background: url(./images/bg-desktop-dark.jpg) top center/100% 50% fixed no-repeat; } }
+    .dark header {
+      background: url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat; } }
 
 .light body {
   background-color: white;
   color: black; }
 .light button {
   color: black; }
-.light main {
-  background: url(./images/bg-mobile-light.jpg) top center/100% 30% fixed no-repeat; }
+.light header {
+  background: url(./images/bg-mobile-light.jpg) top center/100% 100% no-repeat; }
   @media (min-width: 1440px) {
-    .light main {
-      background: url(./images/bg-desktop-light.jpg) top center/100% 50% fixed no-repeat; } }
+    .light header {
+      background: url(./images/bg-desktop-light.jpg) top center/100% 100% no-repeat; } }
 
 html {
   box-sizing: border-box; }
@@ -12951,10 +12954,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  /*position: relative;        
-  min-height: 100%;         
-  padding-bottom: 6rem;*/
-  font-size: 100%;
+  font-size: 1rem;
   font-weight: 400; }
 
 .top-z-index {
@@ -12969,26 +12969,19 @@ body {
   border-radius: 50%;
   margin: auto; }
 
-main {
-  position: relative; }
-  main .container {
-    /*position: -webkit-sticky;
-    position: sticky;
-    top: 10px;*/ }
-    main .container form {
-      transform: translate(50%, 51%); }
-      main .container form header {
-        height: 100px; }
+main form {
+  position: relative;
+  top: -4rem; }
+  main form #form-body, main form #form-header {
+    max-width: 85%;
+    margin: 0 auto; }
+  main form #form-header {
+    height: 15rem; }
 
-#bottom-footer {
-  position: absolute;
-  margin-top: 10rem;
-  left: 48%;
-  height: 2.5rem; }
-  #bottom-footer .attribution {
-    font-size: 8px;
-    text-align: center; }
-  #bottom-footer .attribution a {
-    color: #3e52a3; }
+#bottom-footer .attribution {
+  font-size: 8px;
+  text-align: center; }
+#bottom-footer .attribution a {
+  color: #3e52a3; }
 
 /*# sourceMappingURL=todo-app-main.css.map */

@@ -36,7 +36,7 @@ function uuidv4() {
 	);
 }
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////  ADD COMMENTS!!!!!!!!!!!!!!!!!!!!
 newTaskTextArea.addEventListener('keydown', (event) => {
   
   const regex = /\S/;

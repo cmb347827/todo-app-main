@@ -55,7 +55,8 @@ Users should be able to:
 
 
 ### What I learned
-
+  - Had the purple background set for the main element at first, but I could not get that to look right as it kept growing with the form content. When I changed it to apply to the header element it worked.
+  
 
 
 ### Continued development
