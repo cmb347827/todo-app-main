@@ -63,26 +63,26 @@ $fallback-colors-dark: (
 .dark{
     body{
       @include bg-color(map-get($dark-colors,Very Dark Grayish Blue2),nth($fallback-colors-dark,7));
-      @include font-color(map-get($dark-colors,Light Grayish Blue1),nth($fallback-colors-dark,3));
        form {
-          
-          > *{
+          #form-body{
             @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
-            @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
-            &:focus{
+            textarea,input{
               @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
-              @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
             }
           }
           #all-tasks{
-            .task{
+            margin-top: 10px;
+            .task,textarea {
               border:none;
-              border-bottom: 1px solid white;
+            }
+            .bottom-hr{
+              color:white;
             }
           }
        }
-       
-      
+    }
+    .cross{
+       fill: white;
     }
     button{
        color: white;

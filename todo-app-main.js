@@ -44,7 +44,6 @@ newTaskTextArea.addEventListener('keydown', (event) => {
 
   //user presses enter key 
   if (event.key === 'Enter' && passed) {
-        console.log('oke in here');
         //if the user has tried to enter a blank task earlier, remove the error message.
         if($('#blank-error').hasClass('show-error')){
             $('#blank-error').removeClass('show-error');
@@ -102,17 +101,17 @@ function taskActions(key,which,arr){
     
 }
 function updateTask(event){
-   //update taskData with the newly updated task
+   //update taskData with the newly updated task when once entered task value changes. 
    taskData.forEach((task)=>{
         if(task.taskId===Number(event.currentTarget.parentElement.id)){
-            console.log(event.currentTarget.value);                           ///finish this still 
-            
+            task.task = event.currentTarget.value;
         }
    });
-
+   localStorage.setItem("tasks", JSON.stringify(taskData));
 }
+
 function setRemoveChecked(event){
-    //deals with checking/unchecking a task    ++++++ update active/completed!!!! 
+    //deals with checking/unchecking a task  and will update activeTasks or completedTasks once active or completed buttons are clicked as checked attribute is used.
     taskData.forEach((task)=>{
         if(task.taskId===Number(event.currentTarget.parentElement.id)){
             //found the current checked/unchecked task in taskData
@@ -232,8 +231,9 @@ const updateTaskContainer = (data) => {
                           <label class='visually-hidden'>Check or uncheck task</label>
                           <input onchange='setRemoveChecked(event)' class="form-check-input" type="checkbox" ${which} >
                           <textarea onchange='updateTask(event)' class="form-control">${task}</textarea>
-                          <button onclick='deleteTask(event)' type='button' class='delete-task btn'><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></button>
+                          <button onclick='deleteTask(event)' type='button' class='delete-task btn'><svg class='cross' xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></button>
                         </div>
+                        <hr class='bottom-hr'>
                  `)
           }
         
