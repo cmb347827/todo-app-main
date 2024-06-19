@@ -65,11 +65,20 @@ $fallback-colors-dark: (
       @include bg-color(map-get($dark-colors,Very Dark Grayish Blue2),nth($fallback-colors-dark,7));
       @include font-color(map-get($dark-colors,Light Grayish Blue1),nth($fallback-colors-dark,3));
        form {
-          border:none;
-          border-bottom: 1px solid white;
-          > div{
+          
+          > *{
             @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
             @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+            &:focus{
+              @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
+              @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+            }
+          }
+          #all-tasks{
+            .task{
+              border:none;
+              border-bottom: 1px solid white;
+            }
           }
        }
        
@@ -88,8 +97,16 @@ $fallback-colors-dark: (
 }
 .light{
     body{
-        background-color:white;
-        color:black;
+      @include bg-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-light,1));
+      @include font-color(map-get($light-colors,Light Grayish Blue1),nth($fallback-colors-light,3));
+       form {
+          border:none;
+          border-bottom: 1px solid white;
+          > div,textarea{
+            @include bg-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-light,1));
+            @include font-color(map-get($light-colors,Light Grayish Blue2),nth($fallback-colors-light,4));
+          }
+       }
     }
     button{
         color: black;
@@ -137,7 +154,7 @@ body{
 main{ 
     
       form{
-
+          
           #form-body,#form-header{
             max-width: 85%;
             @include margin(0 auto);

@@ -38,13 +38,13 @@ function uuidv4() {
 
 
 newTaskTextArea.addEventListener('keydown', (event) => {
-  
   const regex = /\S/;
   //prevents the user from entering nothing 
   let passed = regex.test(newTaskTextArea.value);
 
   //user presses enter key 
   if (event.key === 'Enter' && passed) {
+        console.log('oke in here');
         //if the user has tried to enter a blank task earlier, remove the error message.
         if($('#blank-error').hasClass('show-error')){
             $('#blank-error').removeClass('show-error');
@@ -74,7 +74,6 @@ newTaskTextArea.addEventListener('keydown', (event) => {
         $('#blank-error').addClass('show-error');
      }
   }
-
 });
 
 function getInputArray(which){
@@ -102,9 +101,18 @@ function taskActions(key,which,arr){
     }
     
 }
+function updateTask(event){
+   //update taskData with the newly updated task
+   taskData.forEach((task)=>{
+        if(task.taskId===Number(event.currentTarget.parentElement.id)){
+            console.log(event.currentTarget.value);                           ///finish this still 
+            
+        }
+   });
 
+}
 function setRemoveChecked(event){
-    //deals with checking/unchecking a task
+    //deals with checking/unchecking a task    ++++++ update active/completed!!!! 
     taskData.forEach((task)=>{
         if(task.taskId===Number(event.currentTarget.parentElement.id)){
             //found the current checked/unchecked task in taskData
@@ -220,10 +228,10 @@ const updateTaskContainer = (data) => {
                     which='';
                    }
                   (tasksDiv.innerHTML += `
-                        <div class="d-flex bg-white " id="${taskId}">
+                        <div class="d-flex " id="${taskId}">
                           <label class='visually-hidden'>Check or uncheck task</label>
                           <input onchange='setRemoveChecked(event)' class="form-check-input" type="checkbox" ${which} >
-                          <textarea class="form-control">${task}</textarea>
+                          <textarea onchange='updateTask(event)' class="form-control">${task}</textarea>
                           <button onclick='deleteTask(event)' type='button' class='delete-task btn'><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></button>
                         </div>
                  `)

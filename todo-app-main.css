@@ -12919,13 +12919,17 @@ textarea.form-control-lg {
   background-color: #393a4c;
   color: Crystal;
   color: #cacde8; }
-  .dark body form {
-    border: none;
-    border-bottom: 1px solid white; }
-    .dark body form > div {
+  .dark body form > * {
+    background-color: RoyalBlue4;
+    background-color: #4d5066;
+    color: Cerulean; }
+    .dark body form > *:focus {
       background-color: RoyalBlue4;
       background-color: #4d5066;
       color: Cerulean; }
+  .dark body form #all-tasks .task {
+    border: none;
+    border-bottom: 1px solid white; }
 .dark button {
   color: white; }
 .dark header {
@@ -12935,8 +12939,16 @@ textarea.form-control-lg {
       background: url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat; } }
 
 .light body {
-  background-color: white;
-  color: black; }
+  background-color: Gray99;
+  background-color: #fafafa;
+  color: Gray82; }
+  .light body form {
+    border: none;
+    border-bottom: 1px solid white; }
+    .light body form > div, .light body form textarea {
+      background-color: Gray99;
+      background-color: #fafafa;
+      color: Gray44; }
 .light button {
   color: black; }
 .light header {
