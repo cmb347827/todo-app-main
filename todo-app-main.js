@@ -36,14 +36,16 @@ function uuidv4() {
 	);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////  ADD COMMENTS!!!!!!!!!!!!!!!!!!!!
+
 newTaskTextArea.addEventListener('keydown', (event) => {
   
   const regex = /\S/;
   //prevents the user from entering nothing 
   let passed = regex.test(newTaskTextArea.value);
-  //user presses enter key , 
+
+  //user presses enter key 
   if (event.key === 'Enter' && passed) {
+        //if the user has tried to enter a blank task earlier, remove the error message.
         if($('#blank-error').hasClass('show-error')){
             $('#blank-error').removeClass('show-error');
             $('#blank-error').addClass('hide-error');
@@ -51,23 +53,23 @@ newTaskTextArea.addEventListener('keydown', (event) => {
         //on user presses the enter key in 'create a new todo' textarea, get the new todo textarea value.
         const newTaskValue =newTaskTextArea.value.trim();
         if(newTaskValue){
+            //create a new task object
             const newTask ={
                 taskId: Date.now(),
                 task: newTaskValue,
                 checked: false,
             }
+            //add the new task to the taskData array
             taskData.unshift(newTask);
+            //clear the #enter-task textarea
             newTaskTextArea.value='';
             localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
+            //update the shown list with the new task added (taskData)
             updateTaskContainer(taskData);
         }
   }else if(event.key ==='Enter' && !passed){
-     console.log('in 1');
-     //$(errBlank).addClass('show');
-     console.log(errBlank.classList);
-     console.log($('#blank-error').hasClass==='hide-error','...',$('#blank-error').hasClass==='show-error');
+     //the user has pressed enter while the #enter-task textarea is blank, show an error message.
      if($('#blank-error').hasClass('hide-error')){
-        console.log('in 2');
         $('#blank-error').removeClass('hide-error');
         $('#blank-error').addClass('show-error');
      }
@@ -76,6 +78,7 @@ newTaskTextArea.addEventListener('keydown', (event) => {
 });
 
 function getInputArray(which){
+  //return the input task array (either active or completed)
   const remainderArray=taskData.filter(which); 
   if(remainderArray){
      return remainderArray;
@@ -86,6 +89,7 @@ function getInputArray(which){
 
 function taskActions(key,which,arr){
     let remainingInputArray= getInputArray(which);
+    //below code will update either the active or completed arrays with the new task.
     if(remainingInputArray.length >0 ){
       remainingInputArray.forEach(input=>{
           arr.push(input);
@@ -100,14 +104,17 @@ function taskActions(key,which,arr){
 }
 
 function setRemoveChecked(event){
+    //deals with checking/unchecking a task
     taskData.forEach((task)=>{
         if(task.taskId===Number(event.currentTarget.parentElement.id)){
+            //found the current checked/unchecked task in taskData
             if(task.checked){
                //task was checked, uncheck it
                (event.currentTarget).setAttribute('checked',false);
                (event.currentTarget).setAttribute('aria-checked',false);
                task.checked=false;
             }else{
+               //task was unchecked, check it.
                //set the checked inputs check property in taskData (task) to checked
                (event.currentTarget).setAttribute('checked',true);
                (event.currentTarget).setAttribute('aria-checked',true);
@@ -123,28 +130,37 @@ function setRemoveChecked(event){
   
 }))*/
 function deleteTask(e){
-   //console.log((e.currentTarget.parentElement.id));
+   //delete the task (when x is clicked to right of task)
    taskData= taskData.filter(task=>!(task.taskId===Number(e.currentTarget.parentElement.id)));
    
    localStorage.setItem('tasks', JSON.stringify(taskData));
+   //update shown list with the task deleted
    updateTaskContainer(taskData);
 }
   
 
 
 allBtn.addEventListener('click',(e)=>{
+   //the 'all' button was clicked, set it's aria-selected 
    e.currentTarget.setAttribute('aria-selected','true');
+   //update list to show all tasks in taskData
    updateTaskContainer(taskData);
+   //now the 'all' button should lose focus
    e.currentTarget.blur();
 });
 
 
 completedBtn.addEventListener('click',(e)=>{
+   ////the 'completed' button was clicked, set it's aria-selected 
    e.currentTarget.setAttribute('aria-selected','true');
+   //set completedTasks to empty array , to avoid adding to end from possible earlier getItem calls.
    completedTasks=[];
+   //check to see which tasks are completed and update completedTasks
    taskActions('completed-tasks',isChecked,completedTasks);
    completedTasks=JSON.parse(localStorage.getItem("completed-tasks"));
+   //update list shown with newly fetched completedTasks
    updateTaskContainer(completedTasks);
+   //now the 'completed' button should lose focus
    e.currentTarget.blur();
 });
 
@@ -152,11 +168,16 @@ const isChecked=(inputEl)=>inputEl.checked;
 const isNotChecked=(inputEl)=>!inputEl.checked;
 
 activeBtn.addEventListener('click',(e)=>{
+    //the 'active' button was clicked, set it's aria-selected 
     e.currentTarget.setAttribute('aria-selected','true');
+    //set activeTasks to empty array , to avoid adding to end from possible earlier getItem calls.
     activeTasks=[];
+    //check to see which tasks are active and update activeTasks
     taskActions('active-tasks',isNotChecked,activeTasks);
     activeTasks = JSON.parse(localStorage.getItem("active-tasks"));
+    //update list shown with newly fetched activeTasks
     updateTaskContainer(activeTasks);
+    //now the 'active' button should lose focus
     e.currentTarget.blur();
 });
 
@@ -170,15 +191,21 @@ const clearTodo=()=>{
 }
 
 clearCompleted.addEventListener('click',(e)=>{
+    //the 'clear completed' button was clicked, set it's aria-selected
     e.currentTarget.setAttribute('aria-selected','true');
+    //set completedTasks to empty array first
     completedTasks=[];
     localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));
+    //in clearTodo() filter out checked tasks and update taskData.
     clearTodo();
+    //update list shown with completed removed
     updateTaskContainer(completedTasks);
+    //'clear completed' button should lose focus.
     e.currentTarget.blur();
 });
 
 const updateTaskContainer = (data) => {
+    //displays the number of active tasks
     const activeArr= taskData.filter(isNotChecked);
     itemsLeft.textContent = activeArr.length;
 
