@@ -15,7 +15,7 @@ $dark-colors:(
   Very Dark Blue: hsl(235, 21%, 11%),
   Very Dark Desaturated Blue: hsl(235, 24%, 19%),
   Light Grayish Blue1: hsl(234, 39%, 85%),
-  Light Grayish Blue2 (hover): hsl(236, 33%, 92%),
+  Light Grayish Blue2: hsl(236, 33%, 92%),
   Dark Grayish Blue: hsl(234, 11%, 52%),
   Very Dark Grayish Blue1: hsl(233, 14%, 35%),
   Very Dark Grayish Blue2: hsl(237, 14%, 26%)
@@ -65,13 +65,24 @@ $fallback-colors-dark: (
       @include bg-color(map-get($dark-colors,Very Dark Grayish Blue2),nth($fallback-colors-dark,7));
        form {
           #form-body{
+            
             @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
-            textarea,input{
-              @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
+            #enter-task,::placeholder{
+              border:none;
+              background-color:map-get($dark-colors, Very Dark Grayish Blue1);
+              @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+            }
+            .items-left{
+              @include font-color(map-get($dark-colors, Light Grayish Blue1),nth($fallback-colors-dark,3));
             }
           }
           #all-tasks{
-            margin-top: 10px;
+            
+            margin-top: 20px;
+            input,textarea{
+              background-color:map-get($dark-colors, Very Dark Grayish Blue1);
+              @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+            }
             .task,textarea {
               border:none;
             }
@@ -79,22 +90,28 @@ $fallback-colors-dark: (
               color:white;
             }
           }
+          ul{
+            border:none;
+          }
        }
     }
     .cross{
-       fill: white;
+       filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(3%) hue-rotate(232deg) brightness(107%) contrast(102%);
     }
     button{
-       color: white;
+        @include font-color(map-get($dark-colors, Light Grayish Blue1),nth($fallback-colors-dark,3));
+        &:hover{
+           @include font-color(map-get($dark-colors, Light Grayish Blue2),nth($fallback-colors-dark,4));
+        }
     }
     header{
         background: url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat ;
         @include media-breakpoint-up(xxl){
             background: url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat ;
         }
-      
     }
 }
+
 .light{
     body{
       @include bg-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-light,1));

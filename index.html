@@ -22,7 +22,7 @@
                   </div>
               </header>
               <div id='form-body' class="top-z-index">
-                    <div>
+                    <div class="">
                         <label id='blank-error' class="hide-error form-label" for="enter-task">Please enter a todo , no blank todos</label>
                         <div class=" d-flex align-items-center">
                           <div class="decorative-circle">
@@ -30,12 +30,13 @@
                           <textarea class='form-control align-middle' placeholder='Create a new todo...' id="enter-task"></textarea>
                         </div>
                     </div>
+                    
                     <div class='' id="all-tasks">
                       <!--tasks added dynamically using js-->
                     </div>
                     <div class=" ">
                         <div class="d-flex justify-content-between">
-                          <p class=" text-white me-xxl-2 me-1"><span id='js-items-left'>0</span> items left</p>
+                          <p class=" items-left me-xxl-2 me-1"><span id='js-items-left'>0</span> items left</p>
                           <ul class="nav nav-tabs  ">
                                   <li aria-selected='false' class="nav-item ">
                                     <button class='btn ' id="js-all-btn" type="button">All</button>

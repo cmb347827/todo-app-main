@@ -12920,19 +12920,34 @@ textarea.form-control-lg {
   .dark body form #form-body {
     background-color: RoyalBlue4;
     background-color: #4d5066; }
-    .dark body form #form-body textarea, .dark body form #form-body input {
-      background-color: RoyalBlue4;
-      background-color: #4d5066; }
+    .dark body form #form-body #enter-task, .dark body form #form-body ::placeholder {
+      border: none;
+      background-color: #4d5066;
+      color: Cerulean;
+      color: #e4e5f1; }
+    .dark body form #form-body .items-left {
+      color: Crystal;
+      color: #cacde8; }
   .dark body form #all-tasks {
-    margin-top: 10px; }
+    margin-top: 20px; }
+    .dark body form #all-tasks input, .dark body form #all-tasks textarea {
+      background-color: #4d5066;
+      color: Cerulean;
+      color: #e4e5f1; }
     .dark body form #all-tasks .task, .dark body form #all-tasks textarea {
       border: none; }
     .dark body form #all-tasks .bottom-hr {
       color: white; }
+  .dark body form ul {
+    border: none; }
 .dark .cross {
-  fill: white; }
+  filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(3%) hue-rotate(232deg) brightness(107%) contrast(102%); }
 .dark button {
-  color: white; }
+  color: Crystal;
+  color: #cacde8; }
+  .dark button:hover {
+    color: Cerulean;
+    color: #e4e5f1; }
 .dark header {
   background: url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat; }
   @media (min-width: 1440px) {
