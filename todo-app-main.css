@@ -12961,21 +12961,21 @@ textarea.form-control-lg {
     .light body form #form-body #container-enter-task div, .light body form #form-body #container-enter-task #enter-task {
       background-color: #f5f5fa; }
     .light body form #form-body #container-enter-task #enter-task, .light body form #form-body #container-enter-task ::placeholder {
-      color: Cerulean;
-      color: #e4e5f1; }
+      color: Charcoal;
+      color: #484b6a; }
     .light body form #form-body #container-enter-task #enter-task {
       border: none; }
   .light body form #form-body #all-tasks div, .light body form #form-body #all-tasks input, .light body form #form-body #all-tasks textarea {
     background-color: #f5f5fa;
-    color: Cerulean;
-    color: #e4e5f1; }
+    color: Charcoal;
+    color: #484b6a; }
   .light body form #form-body #all-tasks .task, .light body form #form-body #all-tasks textarea {
     border: none; }
   .light body form #form-body #all-tasks .bottom-hr {
     color: white; }
-  .light body form #form-body .items-left {
+  .light body form #form-body .items-left, .light body form #form-body ul button {
     color: Cerulean;
-    color: #e4e5f1; }
+    color: #9394a5; }
   .light body form #form-body ul {
     border: none; }
 .light header {

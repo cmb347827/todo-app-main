@@ -127,7 +127,7 @@ $fallback-colors-dark: (
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
                 }
                 #enter-task,::placeholder{
-                  @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                  @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
                 }
                 #enter-task{
                   border:none;
@@ -136,7 +136,7 @@ $fallback-colors-dark: (
               #all-tasks{
                 div,input,textarea{
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
-                  @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                  @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
                 }
                 .task,textarea {
                   border:none;
@@ -145,8 +145,8 @@ $fallback-colors-dark: (
                   color:white;
                 }
               }
-              .items-left{
-                  @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+              .items-left,ul button{
+                  @include font-color(map-get($light-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
               }
               ul{
                 border:none;
