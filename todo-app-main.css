@@ -12917,28 +12917,27 @@ textarea.form-control-lg {
 .dark body {
   background-color: "Prussian Blue";
   background-color: #393a4c; }
-  .dark body form #form-body {
-    background-color: RoyalBlue4;
+  .dark body form #form-body #container-enter-task {
     background-color: #4d5066; }
-    .dark body form #form-body #enter-task, .dark body form #form-body ::placeholder {
-      border: none;
-      background-color: #4d5066;
+    .dark body form #form-body #container-enter-task div, .dark body form #form-body #container-enter-task #enter-task {
+      background-color: #4d5066; }
+    .dark body form #form-body #container-enter-task #enter-task, .dark body form #form-body #container-enter-task ::placeholder {
       color: Cerulean;
       color: #e4e5f1; }
-    .dark body form #form-body .items-left {
-      color: Crystal;
-      color: #cacde8; }
-  .dark body form #all-tasks {
-    margin-top: 20px; }
-    .dark body form #all-tasks input, .dark body form #all-tasks textarea {
-      background-color: #4d5066;
-      color: Cerulean;
-      color: #e4e5f1; }
-    .dark body form #all-tasks .task, .dark body form #all-tasks textarea {
+    .dark body form #form-body #container-enter-task #enter-task {
       border: none; }
-    .dark body form #all-tasks .bottom-hr {
-      color: white; }
-  .dark body form ul {
+  .dark body form #form-body #all-tasks div, .dark body form #form-body #all-tasks input, .dark body form #form-body #all-tasks textarea {
+    background-color: #4d5066;
+    color: Cerulean;
+    color: #e4e5f1; }
+  .dark body form #form-body #all-tasks .task, .dark body form #form-body #all-tasks textarea {
+    border: none; }
+  .dark body form #form-body #all-tasks .bottom-hr {
+    color: white; }
+  .dark body form #form-body .items-left {
+    color: Cerulean;
+    color: #e4e5f1; }
+  .dark body form #form-body ul {
     border: none; }
 .dark .cross {
   filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(3%) hue-rotate(232deg) brightness(107%) contrast(102%); }
@@ -12955,18 +12954,30 @@ textarea.form-control-lg {
       background: url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat; } }
 
 .light body {
-  background-color: Gray99;
-  background-color: #fafafa;
-  color: Gray82; }
-  .light body form {
-    border: none;
-    border-bottom: 1px solid white; }
-    .light body form > div, .light body form textarea {
-      background-color: Gray99;
-      background-color: #fafafa;
-      color: Gray44; }
-.light button {
-  color: black; }
+  background-color: "Oxford Blue";
+  background-color: #fafafa; }
+  .light body form #form-body #container-enter-task {
+    background-color: #f5f5fa; }
+    .light body form #form-body #container-enter-task div, .light body form #form-body #container-enter-task #enter-task {
+      background-color: #f5f5fa; }
+    .light body form #form-body #container-enter-task #enter-task, .light body form #form-body #container-enter-task ::placeholder {
+      color: Cerulean;
+      color: #e4e5f1; }
+    .light body form #form-body #container-enter-task #enter-task {
+      border: none; }
+  .light body form #form-body #all-tasks div, .light body form #form-body #all-tasks input, .light body form #form-body #all-tasks textarea {
+    background-color: #f5f5fa;
+    color: Cerulean;
+    color: #e4e5f1; }
+  .light body form #form-body #all-tasks .task, .light body form #form-body #all-tasks textarea {
+    border: none; }
+  .light body form #form-body #all-tasks .bottom-hr {
+    color: white; }
+  .light body form #form-body .items-left {
+    color: Cerulean;
+    color: #e4e5f1; }
+  .light body form #form-body ul {
+    border: none; }
 .light header {
   background: url(./images/bg-mobile-light.jpg) top center/100% 100% no-repeat; }
   @media (min-width: 1440px) {

@@ -60,38 +60,42 @@ $fallback-colors-dark: (
    display: block;
 }
 
+
 .dark{
     body{
       @include bg-color(map-get($dark-colors,Very Dark Grayish Blue2),nth($fallback-colors-dark,7));
        form {
           #form-body{
-            
-            @include bg-color(map-get($dark-colors,Very Dark Grayish Blue1),nth($fallback-colors-dark,6));
-            #enter-task,::placeholder{
-              border:none;
-              background-color:map-get($dark-colors, Very Dark Grayish Blue1);
-              @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
-            }
-            .items-left{
-              @include font-color(map-get($dark-colors, Light Grayish Blue1),nth($fallback-colors-dark,3));
-            }
-          }
-          #all-tasks{
-            
-            margin-top: 20px;
-            input,textarea{
-              background-color:map-get($dark-colors, Very Dark Grayish Blue1);
-              @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
-            }
-            .task,textarea {
-              border:none;
-            }
-            .bottom-hr{
-              color:white;
-            }
-          }
-          ul{
-            border:none;
+                #container-enter-task{
+                  background-color:map-get($dark-colors, Very Dark Grayish Blue1);
+                  div,#enter-task{
+                    background-color:map-get($dark-colors, Very Dark Grayish Blue1);
+                  }
+                  #enter-task,::placeholder{
+                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                  }
+                  #enter-task{
+                    border:none;
+                  }
+                }
+                #all-tasks{
+                  div,input,textarea{
+                    background-color:map-get($dark-colors, Very Dark Grayish Blue1);
+                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                  }
+                  .task,textarea {
+                    border:none;
+                  }
+                  .bottom-hr{
+                    color:white;
+                  }
+                }
+                .items-left{
+                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                }
+                ul{
+                  border:none;
+                }
           }
        }
     }
@@ -113,21 +117,43 @@ $fallback-colors-dark: (
 }
 
 .light{
-    body{
-      @include bg-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-light,1));
-      @include font-color(map-get($light-colors,Light Grayish Blue1),nth($fallback-colors-light,3));
-       form {
-          border:none;
-          border-bottom: 1px solid white;
-          > div,textarea{
-            @include bg-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-light,1));
-            @include font-color(map-get($light-colors,Light Grayish Blue2),nth($fallback-colors-light,4));
-          }
-       }
-    }
-    button{
-        color: black;
-    }
+  body{
+    @include bg-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-dark,1));
+     form {
+        #form-body{
+              #container-enter-task{
+                background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
+                div,#enter-task{
+                  background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
+                }
+                #enter-task,::placeholder{
+                  @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                }
+                #enter-task{
+                  border:none;
+                }
+              }
+              #all-tasks{
+                div,input,textarea{
+                  background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
+                  @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                }
+                .task,textarea {
+                  border:none;
+                }
+                .bottom-hr{
+                  color:white;
+                }
+              }
+              .items-left{
+                  @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+              }
+              ul{
+                border:none;
+              }
+        }
+     }
+  }
     header{
         background: url(./images/bg-mobile-light.jpg) top center/100% 100% no-repeat ;
         @include media-breakpoint-up(xxl){
