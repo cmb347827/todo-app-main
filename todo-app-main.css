@@ -12914,6 +12914,9 @@ textarea.form-control-lg {
 .show {
   display: block; }
 
+input:checked {
+  background-image: linear-gradient(#57ddff, #c058f3); }
+
 .dark body {
   background-color: "Prussian Blue";
   background-color: #393a4c; }

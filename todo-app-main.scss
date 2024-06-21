@@ -59,7 +59,10 @@ $fallback-colors-dark: (
 .show{
    display: block;
 }
-
+input:checked{
+    background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+      
+}
 
 .dark{
     body{

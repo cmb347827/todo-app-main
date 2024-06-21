@@ -118,7 +118,7 @@ function setRemoveChecked(event){
             if(task.checked){
                //task was checked, uncheck it
                (event.currentTarget).setAttribute('checked',false);
-               (event.currentTarget).setAttribute('aria-checked',false);
+               (event.currentTarget).setAttribute('aria-checked',false);         
                task.checked=false;
             }else{
                //task was unchecked, check it.
@@ -130,6 +130,9 @@ function setRemoveChecked(event){
         }
     });
     localStorage.setItem('tasks', JSON.stringify(taskData));
+    //displays the number of active tasks
+    const activeArr= taskData.filter(isNotChecked);
+    itemsLeft.textContent = activeArr.length;
 }
 
 
