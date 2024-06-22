@@ -1,6 +1,7 @@
 @import 'custom.scss';
 @import '_globals.scss';
 
+
 $light-colors: (
   Very Light Gray: hsl(0, 0%, 98%),
   Very Light Grayish Blue: hsl(236, 33%, 92%),
@@ -59,9 +60,29 @@ $fallback-colors-dark: (
 .show{
    display: block;
 }
-input:checked{
-    background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-      
+
+input{
+    -ms-transform: scale(1.4); 
+    -moz-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    transform:scale(1.4);
+    border-radius:50%;
+    &:checked{
+      background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+      cursor: pointer;
+    }
+    &:checked:after{
+       content:'✔';
+       
+       z-index:99;
+       transition: all .2s;
+       position:relative;
+       right:2px;
+       bottom:2px;
+       filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(318%) hue-rotate(154deg) brightness(105%) contrast(104%);
+    }
+     
+    
 }
 
 .dark{

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap  v5.3.0-alpha2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -12914,8 +12915,23 @@ textarea.form-control-lg {
 .show {
   display: block; }
 
-input:checked {
-  background-image: linear-gradient(#57ddff, #c058f3); }
+input {
+  -ms-transform: scale(1.4);
+  -moz-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  border-radius: 50%; }
+  input:checked {
+    background-image: linear-gradient(#57ddff, #c058f3);
+    cursor: pointer; }
+  input:checked:after {
+    content: '✔';
+    z-index: 99;
+    transition: all .2s;
+    position: relative;
+    right: 2px;
+    bottom: 2px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(318%) hue-rotate(154deg) brightness(105%) contrast(104%); }
 
 .dark body {
   background-color: "Prussian Blue";

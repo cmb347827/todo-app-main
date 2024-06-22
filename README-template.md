@@ -56,7 +56,10 @@ Users should be able to:
 
 ### What I learned
   - Had the purple background set for the main element at first, but I could not get that to look right as it kept growing with the form content. When I changed it to apply to the header element it worked.
-  -I added an error message when a user tries to add a blank task, as well as the ability to save updated tasks that are already in the list.
+  -I added an error message when a user tries to add a blank task, as well as the ability to save updated tasks that are already in the list, also active gets updated when a user checks/unchecks a task.
+  -for the checkbox tickmark I could apply a stackoverflow post (see link)
+  - The use of js filter()
+  - Amazon tutorial project helped with localStorage use
 
 
 ### Continued development
