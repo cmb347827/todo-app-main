@@ -9,9 +9,7 @@ const newTaskTextArea = document.getElementById('enter-task');
 const itemsLeft=document.getElementById('js-items-left');
 const completedBtn = document.getElementById('js-completed-btn');
 const activeBtn = document.getElementById('js-active-btn');
-/*const clearCompletedNodeList = document.getElementsByClassName('js-delete-completed-btn');
-const clearCompleted = Array.from(clearCompletedNodeList);*/
-
+const clearCompleted = document.getElementById('js-delete-completed-btn');
 const allBtn=document.getElementById('js-all-btn');
 const lightBtn=document.getElementById('js-light-btn');
 const darkBtn = document.getElementById('js-dark-btn');
@@ -140,7 +138,9 @@ function setRemoveChecked(event){
 }
 
 
-
+/*[...document.querySelectorAll('.delete-task')].forEach(btn => btn.addEventListener('click',function (e) {
+  
+}))*/
 function deleteTask(e){
    //delete the task (when x is clicked to right of task)
    taskData= taskData.filter(task=>!(task.taskId===Number(e.currentTarget.parentElement.id)));
@@ -202,7 +202,7 @@ const clearTodo=()=>{
     localStorage.setItem("tasks", JSON.stringify(taskData));
 }
 
-[...document.querySelectorAll('.js-delete-completed-btn')].forEach(btn=>btn.addEventListener('click',(e)=>{
+clearCompleted.addEventListener('click',(e)=>{
     //the 'clear completed' button was clicked, set it's aria-selected
     e.currentTarget.setAttribute('aria-selected','true');
     //set completedTasks to empty array first
@@ -214,7 +214,7 @@ const clearTodo=()=>{
     updateTaskContainer(completedTasks);
     //'clear completed' button should lose focus.
     e.currentTarget.blur();
-}));
+});
 
 const updateTaskContainer = (data) => {
     //displays the number of active tasks
@@ -222,21 +222,19 @@ const updateTaskContainer = (data) => {
     itemsLeft.textContent = activeArr.length;
 
     const windowWidth= window.innerWidth;
-    
-    if(windowWidth > 521){
+    /*if(windowWidth > 521){
       if($(largescreenClear).hasClass('hide')){
         $(largescreenClear).removeClass('hide');
         $(mobileClear).addClass('hide');
         $(largescreenClear).addClass('show');
       }
-    }
-    if(windowWidth<=521){
+    }/*else if(windowWidth<=521){
       if($(mobileClear).hasClass('hide')){
         $(mobileClear).removeClass('hide');
         $(largescreenClear).addClass('hide');
         $(mobileClear).addClass('show');
       }
-    }
+    }*/
 
     let which;
     tasksDiv.innerHTML = "";
