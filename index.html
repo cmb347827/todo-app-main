@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/yxgKFKLM/favicon-32x32.png">
-  <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretty-checkbox/3.0.3/pretty-checkbox.min.css" integrity="sha512-kz4Ae66pquz4nVE5ytJyKfPDkQyHSggaDtT1v8oLfOd8bB+ZgZXNLaxex99MNu4fdCsWmi58mhLtfGk5RgfcOw==" crossorigin="anonymous" referrerpolicy="no-referrer" /-->
   <link rel='stylesheet' href='todo-app-main.css' type='text/css'>
   <title>Frontend Mentor | Todo app</title>
 
@@ -27,37 +26,39 @@
                         <div class=" d-flex align-items-center ">
                           <div class="decorative-circle">
                           </div>
-                          <textarea class='form-control pt-4' placeholder='Create a new todo...' id="enter-task"></textarea>
+                          <textarea class='form-control' placeholder='Create a new todo...' id="enter-task"></textarea>
                         </div>
                     </div>
                     
                     <div class='mt-4' id="all-tasks">
                       <!--tasks added dynamically using js-->
                     </div>
-                    <div class=" ">
-                        <div class="d-flex justify-content-between">
-                          <div class="">
-                             <p class=" items-left me-xxl-2 me-1"><span id='js-items-left'>0</span> items left</p>
-                             <li id="mobile-clear" aria-selected='false' class=" nav-item ">
-                                 <button class='btn js-delete-completed-btn' type='button'>Clear Completed</button>
-                            </li>
+                    <div class="container ">
+                       <div class="row ">
+                          <div class="d-flex  flex-column flex-md-row justify-content-around">
+                            <div class="d-flex col-xxl-1 border">
+                                <p class="items-left"><span id='js-items-left'>0</span> items left</p>
+                                <button id="mobile-clear" aria-selected='false' class='btn js-delete-completed-btn' type='button'>Clear Completed</button>
+                            </div>
+                            <ul class=" col-xxl-11 nav nav-tabs border">
+                                    <div class="d-flex">
+                                        <li aria-selected='false' class="nav-item ">
+                                          <button class='btn ' id="js-all-btn" type="button">All</button>
+                                        </li>
+                                        <li  aria-selected='false' class=" nav-item">
+                                          <button class='btn ' id='js-active-btn' type='button'>Active</button>
+                                        </li>
+                                        <li  aria-selected='false' class=" nav-item">
+                                          <button class='btn ' id='js-completed-btn' type='button'>Completed</button>
+                                        </li>
+                                    </div>
+                                    <li id='desktop-clear' aria-selected='false' class="hide nav-item ">
+                                      <button class='btn js-delete-completed-btn' type='button'>Clear Completed</button>
+                                    </li>
+                            </ul>
                           </div>
-                          <ul class="nav nav-tabs  ">
-                                  <li aria-selected='false' class="nav-item ">
-                                    <button class='btn ' id="js-all-btn" type="button">All</button>
-                                  </li>
-                                  <li  aria-selected='false' class=" nav-item">
-                                    <button class='btn ' id='js-active-btn' type='button'>Active</button>
-                                  </li>
-                                  <li  aria-selected='false' class=" nav-item">
-                                    <button class='btn ' id='js-completed-btn' type='button'>Completed</button>
-                                  </li>
-                                  <li id='largescreen-clear' aria-selected='false' class="hide nav-item ">
-                                    <button class='btn js-delete-completed-btn' type='button'>Clear Completed</button>
-                                  </li>
-                          </ul>
                         </div>
-                    </div> 
+                    </div>
               </div>
           </form>
        

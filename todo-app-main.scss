@@ -114,6 +114,12 @@ input{
                     color:white;
                   }
                 }
+                #bottom-buttons{
+                    li,div{
+                        background-color:map-get($dark-colors, Very Dark Grayish Blue1);
+                        @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                    }
+                }
                 .items-left{
                     @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
                 }
@@ -169,6 +175,12 @@ input{
                   color:white;
                 }
               }
+              #bottom-buttons{
+                li,div{
+                    background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
+                    @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
+                }
+              }
               .items-left,ul button{
                   @include font-color(map-get($light-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
               }
@@ -219,9 +231,15 @@ body{
 
 
 main{ 
-    
+      #mobile-clear{
+        display:block;
+      }
+      @media screen and (min-width: 768px) {
+         #desktop-clear  { display: block; }
+         #mobile-clear { display: none; }
+      }
+      
       form{
-          width: 80%;
           padding:0;
           #form-body,#form-header{
             width: 65%;
@@ -236,7 +254,10 @@ main{
           #form-header{
             height: 15rem;
           }
-         
+          hr{
+            padding:0;
+            margin:0;
+          }
       }
     
 }

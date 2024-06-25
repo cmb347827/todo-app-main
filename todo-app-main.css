@@ -12953,6 +12953,10 @@ input {
     border: none; }
   .dark body form #form-body #all-tasks .bottom-hr {
     color: white; }
+  .dark body form #form-body #bottom-buttons li, .dark body form #form-body #bottom-buttons div {
+    background-color: #4d5066;
+    color: Cerulean;
+    color: #e4e5f1; }
   .dark body form #form-body .items-left {
     color: Cerulean;
     color: #e4e5f1; }
@@ -12992,6 +12996,10 @@ input {
     border: none; }
   .light body form #form-body #all-tasks .bottom-hr {
     color: white; }
+  .light body form #form-body #bottom-buttons li, .light body form #form-body #bottom-buttons div {
+    background-color: #f5f5fa;
+    color: Charcoal;
+    color: #484b6a; }
   .light body form #form-body .items-left, .light body form #form-body ul button {
     color: Cerulean;
     color: #9394a5; }
@@ -13027,8 +13035,14 @@ body {
   border-radius: 50%;
   margin: auto; }
 
+main #mobile-clear {
+  display: block; }
+@media screen and (min-width: 768px) {
+  main #desktop-clear {
+    display: block; }
+  main #mobile-clear {
+    display: none; } }
 main form {
-  width: 80%;
   padding: 0; }
   main form #form-body, main form #form-header {
     width: 65%;
@@ -13040,6 +13054,9 @@ main form {
     top: -3rem; }
   main form #form-header {
     height: 15rem; }
+  main form hr {
+    padding: 0;
+    margin: 0; }
 
 #bottom-footer .attribution {
   font-size: 8px;

@@ -125,7 +125,8 @@ function setRemoveChecked(event){
             if(task.checked){
                //task was checked, uncheck it
                (event.currentTarget).setAttribute('checked',false);
-               (event.currentTarget).setAttribute('aria-checked',false);         
+               (event.currentTarget).setAttribute('aria-checked',false);  
+               textarea.setAttribute('style','text-decoration-line:none');       
                task.checked=false;
             }else{
                //task was unchecked, check it.
@@ -242,7 +243,7 @@ const updateTaskContainer = (data) => {
                         <div class="d-flex align-items-center" id="${taskId}">
                           <input onchange='setRemoveChecked(event)' class="form-check-input" type="checkbox" ${which} >
                           <label class='visually-hidden'>Check or uncheck task</label>
-                          <textarea style='${whichStyle}' onchange='updateTask(event)' class="form-control pt-4">${task}</textarea>
+                          <textarea style='${whichStyle}' onchange='updateTask(event)' class="form-control">${task}</textarea>
                           <button onclick='deleteTask(event)' type='button' class='delete-task btn'><svg  class='cross' xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></button>
                         </div>
                         <hr class='bottom-hr'>
@@ -297,26 +298,10 @@ darkBtn.addEventListener('click',()=>{  //has hide.
        darkBtn.setAttribute('aria-hidden','true');
        darkBtn.setAttribute('aria-disabled','true');
 });
-function windowWidth(){
-    const windowWidth= window.innerWidth;
-    if(windowWidth<=568){
-      if($(mobileClear).hasClass('hide')){
-        $(mobileClear).removeClass('hide');
-        $(largescreenClear).addClass('hide');
-        $(mobileClear).addClass('show');
-      }
-    }
-    else if(windowWidth > 568){
-      if($(largescreenClear).hasClass('hide')){
-        $(largescreenClear).removeClass('hide');
-        $(mobileClear).addClass('hide');
-        $(largescreenClear).addClass('show');
-      }
-    }
-}
+
+
 $(window).on('load',function(){
     clearLocalStorage();
-    windowWidth();
 	  updateTaskContainer(taskData);
     Sortable.create(tasksDiv);
     
