@@ -98,52 +98,42 @@ input{
                   #enter-task,::placeholder{
                     @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
                   }
-                  #enter-task{
-                    border:none;
-                  }
+                  
                 }
                 #all-tasks{
                   div,input,textarea{
                     background-color:map-get($dark-colors, Very Dark Grayish Blue1);
                     @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
                   }
-                  .task,textarea {
-                    border:none;
-                  }
                   .bottom-hr{
                     color:white;
                   }
                 }
-                #bottom-buttons{
-                    li,div{
-                        background-color:map-get($dark-colors, Very Dark Grayish Blue1);
-                        @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
-                    }
+                .button-parent, .button-parent > *{
+                    background-color:map-get($dark-colors, Very Dark Grayish Blue1);
+                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
                 }
                 .items-left{
                     @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
                 }
-                ul{
-                  border:none;
-                }
           }
        }
+       .attribution a ,.attribution span{
+          color: map-get($dark-colors, Light Grayish Blue2);
+       }
+      .cross{
+        filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(3%) hue-rotate(232deg) brightness(107%) contrast(102%);
+      }
+      
     }
-    .cross{
-       filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(3%) hue-rotate(232deg) brightness(107%) contrast(102%);
-    }
-    button{
-        @include font-color(map-get($dark-colors, Light Grayish Blue1),nth($fallback-colors-dark,3));
-        &:hover{
-           @include font-color(map-get($dark-colors, Light Grayish Blue2),nth($fallback-colors-dark,4));
-        }
-    }
+    
     header{
         background: url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat ;
         @include media-breakpoint-up(xxl){
             background: url(./images/bg-desktop-dark.jpg) top center/100% 100% no-repeat ;
         }
     }
+    
 }
 
 .light{
@@ -159,36 +149,32 @@ input{
                 #enter-task,::placeholder{
                   @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
                 }
-                #enter-task{
-                  border:none;
-                }
+              
               }
               #all-tasks{
                 div,input,textarea{
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
                   @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
                 }
-                .task,textarea {
-                  border:none;
-                }
                 .bottom-hr{
                   color:white;
                 }
               }
-              #bottom-buttons{
-                li,div{
-                    background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
-                    @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
-                }
+              .button-parent,.button-parent > * {
+                  background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
+                  @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
               }
               .items-left,ul button{
                   @include font-color(map-get($light-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
               }
-              ul{
-                border:none;
-              }
         }
      }
+      .cross{
+         filter:brightness(0) saturate(100%) invert(5%) sepia(5%) saturate(6774%) hue-rotate(146deg) brightness(95%) contrast(104%);
+      }
+      .attribution a,.attribution span {
+        color: map-get($light-colors, Dark Grayish Blue);
+      }
   }
     header{
         background: url(./images/bg-mobile-light.jpg) top center/100% 100% no-repeat ;
@@ -198,6 +184,8 @@ input{
       
     }
 }
+
+
 html{
   box-sizing: border-box; 
 }
@@ -246,14 +234,25 @@ main{
             max-width:568px;
             @include margin(0 auto);
             padding:0;
-          }
-          #form-body{
-            position:relative;
-            top:-3rem;
+            
           }
           #form-header{
             height: 15rem;
           }
+          #form-body{
+            position:relative;
+            top:-3rem;
+            .task,textarea,ul,#enter-task {
+              border:none;
+            }
+            button{
+              @include font-color(map-get($dark-colors, Light Grayish Blue1),nth($fallback-colors-dark,3));
+              &:hover{
+                 @include font-color(map-get($dark-colors, Light Grayish Blue2),nth($fallback-colors-dark,4));
+              }
+            }
+          }
+          
           hr{
             padding:0;
             margin:0;
@@ -267,8 +266,5 @@ main{
   .attribution {
     font-size: $font_size-8;
     text-align: center;
-  }
-  .attribution a {
-    color: hsl(228, 45%, 44%);
   }
 }

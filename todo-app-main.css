@@ -12943,33 +12943,23 @@ input {
     .dark body form #form-body #container-enter-task #enter-task, .dark body form #form-body #container-enter-task ::placeholder {
       color: Cerulean;
       color: #e4e5f1; }
-    .dark body form #form-body #container-enter-task #enter-task {
-      border: none; }
   .dark body form #form-body #all-tasks div, .dark body form #form-body #all-tasks input, .dark body form #form-body #all-tasks textarea {
     background-color: #4d5066;
     color: Cerulean;
     color: #e4e5f1; }
-  .dark body form #form-body #all-tasks .task, .dark body form #form-body #all-tasks textarea {
-    border: none; }
   .dark body form #form-body #all-tasks .bottom-hr {
     color: white; }
-  .dark body form #form-body #bottom-buttons li, .dark body form #form-body #bottom-buttons div {
+  .dark body form #form-body .button-parent, .dark body form #form-body .button-parent > * {
     background-color: #4d5066;
     color: Cerulean;
     color: #e4e5f1; }
   .dark body form #form-body .items-left {
     color: Cerulean;
     color: #e4e5f1; }
-  .dark body form #form-body ul {
-    border: none; }
-.dark .cross {
-  filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(3%) hue-rotate(232deg) brightness(107%) contrast(102%); }
-.dark button {
-  color: Crystal;
-  color: #cacde8; }
-  .dark button:hover {
-    color: Cerulean;
+  .dark body .attribution a, .dark body .attribution span {
     color: #e4e5f1; }
+  .dark body .cross {
+    filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(3%) hue-rotate(232deg) brightness(107%) contrast(102%); }
 .dark header {
   background: url(./images/bg-mobile-dark.jpg) top center/100% 100% no-repeat; }
   @media (min-width: 1440px) {
@@ -12986,25 +12976,23 @@ input {
     .light body form #form-body #container-enter-task #enter-task, .light body form #form-body #container-enter-task ::placeholder {
       color: Charcoal;
       color: #484b6a; }
-    .light body form #form-body #container-enter-task #enter-task {
-      border: none; }
   .light body form #form-body #all-tasks div, .light body form #form-body #all-tasks input, .light body form #form-body #all-tasks textarea {
     background-color: #f5f5fa;
     color: Charcoal;
     color: #484b6a; }
-  .light body form #form-body #all-tasks .task, .light body form #form-body #all-tasks textarea {
-    border: none; }
   .light body form #form-body #all-tasks .bottom-hr {
     color: white; }
-  .light body form #form-body #bottom-buttons li, .light body form #form-body #bottom-buttons div {
+  .light body form #form-body .button-parent, .light body form #form-body .button-parent > * {
     background-color: #f5f5fa;
     color: Charcoal;
     color: #484b6a; }
   .light body form #form-body .items-left, .light body form #form-body ul button {
     color: Cerulean;
     color: #9394a5; }
-  .light body form #form-body ul {
-    border: none; }
+  .light body .cross {
+    filter: brightness(0) saturate(100%) invert(5%) sepia(5%) saturate(6774%) hue-rotate(146deg) brightness(95%) contrast(104%); }
+  .light body .attribution a, .light body .attribution span {
+    color: #9394a5; }
 .light header {
   background: url(./images/bg-mobile-light.jpg) top center/100% 100% no-repeat; }
   @media (min-width: 1440px) {
@@ -13049,11 +13037,19 @@ main form {
     max-width: 568px;
     margin: 0 auto;
     padding: 0; }
+  main form #form-header {
+    height: 15rem; }
   main form #form-body {
     position: relative;
     top: -3rem; }
-  main form #form-header {
-    height: 15rem; }
+    main form #form-body .task, main form #form-body textarea, main form #form-body ul, main form #form-body #enter-task {
+      border: none; }
+    main form #form-body button {
+      color: Crystal;
+      color: #cacde8; }
+      main form #form-body button:hover {
+        color: Cerulean;
+        color: #e4e5f1; }
   main form hr {
     padding: 0;
     margin: 0; }
@@ -13061,7 +13057,5 @@ main form {
 #bottom-footer .attribution {
   font-size: 8px;
   text-align: center; }
-#bottom-footer .attribution a {
-  color: #3e52a3; }
 
 /*# sourceMappingURL=todo-app-main.css.map */
