@@ -124,15 +124,13 @@ function setRemoveChecked(event){
             //found the current checked/unchecked task in taskData
             if(task.checked){
                //task was checked, uncheck it
-               (event.currentTarget).setAttribute('checked',false);
-               (event.currentTarget).setAttribute('aria-checked',false);  
+               (event.currentTarget).setAttribute('checked',false); 
                textarea.setAttribute('style','text-decoration-line:none');       
                task.checked=false;
             }else{
                //task was unchecked, check it.
                //set the checked inputs check property in taskData (task) to checked
                (event.currentTarget).setAttribute('checked',true);
-               (event.currentTarget).setAttribute('aria-checked',true);
                textarea.setAttribute('style','text-decoration-line:line-through');
                task.checked=true;
             }
@@ -159,17 +157,17 @@ function deleteTask(e){
 
 allBtn.addEventListener('click',(e)=>{
    //the 'all' button was clicked, set it's aria-selected 
-   e.currentTarget.setAttribute('aria-selected','true');
+   //e.currentTarget.setAttribute('aria-selected','true');
    //update list to show all tasks in taskData
    updateTaskContainer(taskData);
    //now the 'all' button should lose focus
-   e.currentTarget.blur();
+   //e.currentTarget.blur();
 });
 
 
 completedBtn.addEventListener('click',(e)=>{
    ////the 'completed' button was clicked, set it's aria-selected 
-   e.currentTarget.setAttribute('aria-selected','true');
+   //e.currentTarget.setAttribute('aria-selected','true');
    //set completedTasks to empty array , to avoid adding to end from possible earlier getItem calls.
    completedTasks=[];
    //check to see which tasks are completed and update completedTasks
@@ -178,7 +176,7 @@ completedBtn.addEventListener('click',(e)=>{
    //update list shown with newly fetched completedTasks
    updateTaskContainer(completedTasks);
    //now the 'completed' button should lose focus
-   e.currentTarget.blur();
+   //e.currentTarget.blur();
 });
 
 const isChecked=(inputEl)=>inputEl.checked;
@@ -186,7 +184,7 @@ const isNotChecked=(inputEl)=>!inputEl.checked;
 
 activeBtn.addEventListener('click',(e)=>{
     //the 'active' button was clicked, set it's aria-selected 
-    e.currentTarget.setAttribute('aria-selected','true');
+    //e.currentTarget.setAttribute('aria-selected','true');
     //set activeTasks to empty array , to avoid adding to end from possible earlier getItem calls.
     activeTasks=[];
     //check to see which tasks are active and update activeTasks
@@ -195,7 +193,7 @@ activeBtn.addEventListener('click',(e)=>{
     //update list shown with newly fetched activeTasks
     updateTaskContainer(activeTasks);
     //now the 'active' button should lose focus
-    e.currentTarget.blur();
+    //e.currentTarget.blur();
 });
 
 const clearTodo=()=>{
@@ -209,7 +207,7 @@ const clearTodo=()=>{
 
 [...document.querySelectorAll('.js-delete-completed-btn')].forEach(btn=>btn.addEventListener('click',(e)=>{
     //the 'clear completed' button was clicked, set it's aria-selected
-    e.currentTarget.setAttribute('aria-selected','true');
+    //e.currentTarget.setAttribute('aria-selected','true');
     //set completedTasks to empty array first
     completedTasks=[];
     localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));
@@ -218,7 +216,7 @@ const clearTodo=()=>{
     //update list shown with completed removed
     updateTaskContainer(completedTasks);
     //'clear completed' button should lose focus.
-    e.currentTarget.blur();
+    //e.currentTarget.blur();
 }));
 
 const updateTaskContainer = (data) => {
