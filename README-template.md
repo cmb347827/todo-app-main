@@ -60,6 +60,9 @@ Users should be able to:
   -for the checkbox tickmark I could apply a stackoverflow post (see link)
   - The use of js filter()
   - Amazon tutorial project helped with localStorage use
+  - At first I had to use JS to add the striked out text for completed tasks (see WhichStyle code in updatetaskcontainer and textarea code in setRemoveChecked ), but figured out how to do this using SCSS only (lines 70-80)
+  - I needed to apply the gradient border for the `input[type='checkbox']` on hover, and remembered that I used this before in a previous project.
+    I could use the same technique here.
 
 
 ### Continued development
@@ -67,8 +70,8 @@ Users should be able to:
 - Daily tutorials and projects in HTML5, CSS3, Javascript, Bootstrap, Sass/SCSS. For now, in time I will go re-learn React ect.
 
 ### Useful resources
-[]()
-[]()
+[how to make checkboxes round](https://stackoverflow.com/questions/29617200/how-to-make-checkboxes-rounded)
+[gradient borders](https://codyhouse.co/nuggets/css-gradient-borders)
 
 
 ## Author

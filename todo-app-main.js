@@ -115,23 +115,24 @@ function updateTask(event){
 }
 
 function setRemoveChecked(event){
-    const siblingList =event.currentTarget.parentElement.children;
-    const textarea =siblingList[2];
-
+    //const siblingList =event.currentTarget.parentElement.children;
+    // const textarea =siblingList[2];
+    
     //deals with checking/unchecking a task  and will update activeTasks or completedTasks once active or completed buttons are clicked as checked attribute is used.
     taskData.forEach((task)=>{
         if(task.taskId===Number(event.currentTarget.parentElement.id)){
             //found the current checked/unchecked task in taskData
+            
             if(task.checked){
                //task was checked, uncheck it
                (event.currentTarget).setAttribute('checked',false); 
-               textarea.setAttribute('style','text-decoration-line:none');       
+               //textarea.setAttribute('style','text-decoration-line:none'); 
                task.checked=false;
             }else{
                //task was unchecked, check it.
                //set the checked inputs check property in taskData (task) to checked
                (event.currentTarget).setAttribute('checked',true);
-               textarea.setAttribute('style','text-decoration-line:line-through');
+               //textarea.setAttribute('style','text-decoration-line:line-through');
                task.checked=true;
             }
         }
@@ -231,15 +232,15 @@ const updateTaskContainer = (data) => {
       data.forEach(
           ({ taskId, task ,checked}) => {
                    if(checked){
-                    whichStyle='text-decoration-line:line-through';
+                    //whichStyle='text-decoration-line:line-through';
                     which='checked';
                    }else{
                     whichStyle={};
                     which='';
                    }
                   (tasksDiv.innerHTML += `
-                        <div class="d-flex align-items-center" id="${taskId}">
-                          <input onchange='setRemoveChecked(event)' class="form-check-input" type="checkbox" ${which} >
+                        <div class="d-flex align-items-center ps-1 pt-1" id="${taskId}">
+                          <input onchange='setRemoveChecked(event)' class="form-check-input checkbox-round" type="checkbox" ${which} >
                           <label class='visually-hidden'>Check or uncheck task</label>
                           <textarea style='${whichStyle}' onchange='updateTask(event)' class="form-control">${task}</textarea>
                           <button onclick='deleteTask(event)' type='button' class='delete-task btn'><svg  class='cross' xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></button>

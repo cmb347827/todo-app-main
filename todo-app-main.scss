@@ -61,29 +61,6 @@ $fallback-colors-dark: (
    display: block;
 }
 
-input{
-    -ms-transform: scale(1.4); 
-    -moz-transform: scale(1.4);
-    -webkit-transform: scale(1.4);
-    transform:scale(1.4);
-    border-radius:50%;
-    &:checked{
-      background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-      cursor: pointer;
-    }
-    &:checked:after{
-       content:'✔';
-       
-       z-index:99;
-       transition: all .2s;
-       position:relative;
-       right:2px;
-       bottom:2px;
-       filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(318%) hue-rotate(154deg) brightness(105%) contrast(104%);
-    }
-     
-    
-}
 
 .dark{
     body{
@@ -96,14 +73,14 @@ input{
                     background-color:map-get($dark-colors, Very Dark Grayish Blue1);
                   }
                   #enter-task,::placeholder{
-                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                    @include font-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-dark,1));
                   }
                   
                 }
                 #all-tasks{
                   div,input,textarea{
                     background-color:map-get($dark-colors, Very Dark Grayish Blue1);
-                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
+                    @include font-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-dark,1));
                   }
                   .bottom-hr{
                     color:white;
@@ -116,6 +93,12 @@ input{
                 .items-left{
                     @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
                 }
+          }
+          .checkbox-round{
+            &:hover{
+                background: linear-gradient(gray, gray) padding-box,
+                linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+            }
           }
        }
        .attribution a ,.attribution span{
@@ -147,14 +130,14 @@ input{
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
                 }
                 #enter-task,::placeholder{
-                  @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
+                  @include font-color(map-get($dark-colors,Very Dark Blue),nth($fallback-colors-dark,1));
                 }
               
               }
               #all-tasks{
                 div,input,textarea{
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
-                  @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
+                  @include font-color(map-get($dark-colors,Very Dark Blue),nth($fallback-colors-dark,1));
                 }
                 .bottom-hr{
                   color:white;
@@ -167,6 +150,12 @@ input{
               .items-left,ul button{
                   @include font-color(map-get($light-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
               }
+        }
+        .checkbox-round{
+            &:hover{
+                background: linear-gradient(white, white) padding-box,
+                linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+            }
         }
      }
       .cross{
@@ -183,6 +172,35 @@ input{
         }
       
     }
+}
+
+input{
+  -ms-transform: scale(1.4); 
+  -moz-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  transform:scale(1.4);
+  border-radius:50%;
+  &:not(:checked) ~ textarea{
+     text-decoration: none;
+  }
+  &:checked{
+    background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    cursor: pointer;
+    & ~ textarea{
+      text-decoration-line:line-through;
+      color:red;
+    }
+  }
+  &:checked:after{
+     content:'✔';
+     
+     z-index:99;
+     transition: all .2s;
+     position:relative;
+     right:2px;
+     bottom:2px;
+     filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(318%) hue-rotate(154deg) brightness(105%) contrast(104%);
+  }
 }
 
 
@@ -251,6 +269,25 @@ main{
                  @include font-color(map-get($dark-colors, Light Grayish Blue2),nth($fallback-colors-dark,4));
               }
             }
+            .checkbox-round {
+              width: 1.3em;
+              height: 1.3em;
+              background-color: white;
+              border-radius: 50%;
+              vertical-align: middle;
+              border: 1px solid #ddd;
+              appearance: none;
+              -webkit-appearance: none;
+              outline: none;
+              cursor: pointer;
+              &:hover{
+                  //background: linear-gradient(white, white) padding-box,
+                  //linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+                  border-radius: 50em;
+                  border: 2px solid transparent;
+              }
+            }
+            
           }
           
           hr{

@@ -12915,24 +12915,6 @@ textarea.form-control-lg {
 .show {
   display: block; }
 
-input {
-  -ms-transform: scale(1.4);
-  -moz-transform: scale(1.4);
-  -webkit-transform: scale(1.4);
-  transform: scale(1.4);
-  border-radius: 50%; }
-  input:checked {
-    background-image: linear-gradient(#57ddff, #c058f3);
-    cursor: pointer; }
-  input:checked:after {
-    content: '✔';
-    z-index: 99;
-    transition: all .2s;
-    position: relative;
-    right: 2px;
-    bottom: 2px;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(318%) hue-rotate(154deg) brightness(105%) contrast(104%); }
-
 .dark body {
   background-color: "Prussian Blue";
   background-color: #393a4c; }
@@ -12941,12 +12923,12 @@ input {
     .dark body form #form-body #container-enter-task div, .dark body form #form-body #container-enter-task #enter-task {
       background-color: #4d5066; }
     .dark body form #form-body #container-enter-task #enter-task, .dark body form #form-body #container-enter-task ::placeholder {
-      color: Cerulean;
-      color: #e4e5f1; }
+      color: "Oxford Blue";
+      color: #fafafa; }
   .dark body form #form-body #all-tasks div, .dark body form #form-body #all-tasks input, .dark body form #form-body #all-tasks textarea {
     background-color: #4d5066;
-    color: Cerulean;
-    color: #e4e5f1; }
+    color: "Oxford Blue";
+    color: #fafafa; }
   .dark body form #form-body #all-tasks .bottom-hr {
     color: white; }
   .dark body form #form-body .button-parent, .dark body form #form-body .button-parent > * {
@@ -12956,6 +12938,8 @@ input {
   .dark body form #form-body .items-left {
     color: Cerulean;
     color: #e4e5f1; }
+  .dark body form .checkbox-round:hover {
+    background: linear-gradient(gray, gray) padding-box, linear-gradient(#57ddff, #c058f3) border-box; }
   .dark body .attribution a, .dark body .attribution span {
     color: #e4e5f1; }
   .dark body .cross {
@@ -12974,12 +12958,12 @@ input {
     .light body form #form-body #container-enter-task div, .light body form #form-body #container-enter-task #enter-task {
       background-color: #f5f5fa; }
     .light body form #form-body #container-enter-task #enter-task, .light body form #form-body #container-enter-task ::placeholder {
-      color: Charcoal;
-      color: #484b6a; }
+      color: "Oxford Blue";
+      color: #161722; }
   .light body form #form-body #all-tasks div, .light body form #form-body #all-tasks input, .light body form #form-body #all-tasks textarea {
     background-color: #f5f5fa;
-    color: Charcoal;
-    color: #484b6a; }
+    color: "Oxford Blue";
+    color: #161722; }
   .light body form #form-body #all-tasks .bottom-hr {
     color: white; }
   .light body form #form-body .button-parent, .light body form #form-body .button-parent > * {
@@ -12989,6 +12973,8 @@ input {
   .light body form #form-body .items-left, .light body form #form-body ul button {
     color: Cerulean;
     color: #9394a5; }
+  .light body form .checkbox-round:hover {
+    background: linear-gradient(white, white) padding-box, linear-gradient(#57ddff, #c058f3) border-box; }
   .light body .cross {
     filter: brightness(0) saturate(100%) invert(5%) sepia(5%) saturate(6774%) hue-rotate(146deg) brightness(95%) contrast(104%); }
   .light body .attribution a, .light body .attribution span {
@@ -12998,6 +12984,29 @@ input {
   @media (min-width: 1440px) {
     .light header {
       background: url(./images/bg-desktop-light.jpg) top center/100% 100% no-repeat; } }
+
+input {
+  -ms-transform: scale(1.4);
+  -moz-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  border-radius: 50%; }
+  input:not(:checked) ~ textarea {
+    text-decoration: none; }
+  input:checked {
+    background-image: linear-gradient(#57ddff, #c058f3);
+    cursor: pointer; }
+    input:checked ~ textarea {
+      text-decoration-line: line-through;
+      color: red; }
+  input:checked:after {
+    content: '✔';
+    z-index: 99;
+    transition: all .2s;
+    position: relative;
+    right: 2px;
+    bottom: 2px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(318%) hue-rotate(154deg) brightness(105%) contrast(104%); }
 
 html {
   box-sizing: border-box; }
@@ -13050,6 +13059,20 @@ main form {
       main form #form-body button:hover {
         color: Cerulean;
         color: #e4e5f1; }
+    main form #form-body .checkbox-round {
+      width: 1.3em;
+      height: 1.3em;
+      background-color: white;
+      border-radius: 50%;
+      vertical-align: middle;
+      border: 1px solid #ddd;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer; }
+      main form #form-body .checkbox-round:hover {
+        border-radius: 50em;
+        border: 2px solid transparent; }
   main form hr {
     padding: 0;
     margin: 0; }
