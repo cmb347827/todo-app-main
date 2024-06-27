@@ -13039,6 +13039,8 @@ main #mobile-clear {
     display: block; }
   main #mobile-clear {
     display: none; } }
+main .grayish-font {
+  color: #cacde8; }
 main form {
   padding: 0; }
   main form #form-body, main form #form-header {

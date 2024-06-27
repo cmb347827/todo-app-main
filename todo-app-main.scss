@@ -244,7 +244,9 @@ main{
          #desktop-clear  { display: block; }
          #mobile-clear { display: none; }
       }
-      
+      .grayish-font{
+        color: map-get($dark-colors, Light Grayish Blue1);
+      }
       form{
           padding:0;
           #form-body,#form-header{
