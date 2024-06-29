@@ -13041,7 +13041,7 @@ main form {
   padding: 0; }
   main form #form-body, main form #form-header {
     width: 65%;
-    max-width: 568px;
+    max-width: 768px;
     margin: 0 auto;
     padding: 0; }
   main form #form-header {
