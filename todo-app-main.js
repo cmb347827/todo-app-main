@@ -301,7 +301,7 @@ darkBtn.addEventListener('click',()=>{  //has hide.
 
 $(window).on('load',function(){
     clearLocalStorage();
-    Sortable.create(tasksDiv,{
+    /*Sortable.create(tasksDiv,{
       group: "TODO",
       options: {
         animation: 100,
@@ -310,15 +310,28 @@ $(window).on('load',function(){
         sort: true,
         filter: ".sortable-disabled",
         chosenClass: "active",
-        onSort: function (/**Event*/evt) {
+        onSort: function (Event,evt) {
           orderList(evt.oldIndex, evt.newIndex);
         },
       },
       
-    });
-      
-
+    });*/
+    let items = document.querySelector('#all-tasks');  Sortable.create(items, {      
+        animation: 150,               
+        group: "tasks",      
+        store: {          
+           set:(sortable) => {              
+              const order = sortable.toArray();              
+              localStorage.setItem(sortable.options.group.name, order.join('|'));          
+           },          
+           //get list order       
+           get: (sortable) => {              
+             const order = localStorage.getItem(sortable.options.group.name);              
+             return order ? order.split('|') : [];          
+            }      
+        }  
+    });  
     
     updateTaskContainer(taskData);
-    
+  
 });
