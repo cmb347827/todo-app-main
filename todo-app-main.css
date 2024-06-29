@@ -13013,7 +13013,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: 400; }
 
 .top-z-index {
@@ -13040,8 +13040,8 @@ main .grayish-font {
 main form {
   padding: 0; }
   main form #form-body, main form #form-header {
-    width: 65%;
-    max-width: 768px;
+    width: 90%;
+    max-width: 992px;
     margin: 0 auto;
     padding: 0; }
   main form #form-header {
