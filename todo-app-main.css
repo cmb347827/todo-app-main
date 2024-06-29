@@ -12931,13 +12931,11 @@ textarea.form-control-lg {
     color: #fafafa; }
   .dark body form #form-body #all-tasks .bottom-hr {
     color: white; }
+  .dark body form #form-body .items-left, .dark body form #form-body ul button {
+    color: Crystal;
+    color: #cacde8; }
   .dark body form #form-body .button-parent, .dark body form #form-body .button-parent > * {
-    background-color: #4d5066;
-    color: Cerulean;
-    color: #e4e5f1; }
-  .dark body form #form-body .items-left {
-    color: Cerulean;
-    color: #e4e5f1; }
+    background-color: #4d5066; }
   .dark body form .checkbox-round:hover {
     background: linear-gradient(gray, gray) padding-box, linear-gradient(#57ddff, #c058f3) border-box; }
   .dark body .attribution a, .dark body .attribution span {
@@ -12954,25 +12952,23 @@ textarea.form-control-lg {
   background-color: "Oxford Blue";
   background-color: #fafafa; }
   .light body form #form-body #container-enter-task {
-    background-color: #f5f5fa; }
+    background-color: #f1f2f8; }
     .light body form #form-body #container-enter-task div, .light body form #form-body #container-enter-task #enter-task {
-      background-color: #f5f5fa; }
+      background-color: #f1f2f8; }
     .light body form #form-body #container-enter-task #enter-task, .light body form #form-body #container-enter-task ::placeholder {
       color: "Oxford Blue";
       color: #161722; }
   .light body form #form-body #all-tasks div, .light body form #form-body #all-tasks input, .light body form #form-body #all-tasks textarea {
     background-color: #f5f5fa;
-    color: "Oxford Blue";
-    color: #161722; }
+    color: Cerulean;
+    color: #777a92; }
   .light body form #form-body #all-tasks .bottom-hr {
     color: white; }
-  .light body form #form-body .button-parent, .light body form #form-body .button-parent > * {
-    background-color: #f5f5fa;
-    color: Charcoal;
-    color: #484b6a; }
-  .light body form #form-body .items-left, .light body form #form-body ul button {
+  .light body form #form-body .items-left, .light body form #form-body ul button, .light body form #form-body #mobile-clear {
     color: Cerulean;
     color: #9394a5; }
+  .light body form #form-body .button-parent, .light body form #form-body .button-parent > * {
+    background-color: #f5f5fa; }
   .light body form .checkbox-round:hover {
     background: linear-gradient(white, white) padding-box, linear-gradient(#57ddff, #c058f3) border-box; }
   .light body .cross {

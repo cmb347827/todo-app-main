@@ -86,12 +86,11 @@ $fallback-colors-dark: (
                     color:white;
                   }
                 }
+                .items-left,ul button{
+                  @include font-color(map-get($dark-colors,Light Grayish Blue1),nth($fallback-colors-dark,3));
+                }
                 .button-parent, .button-parent > *{
                     background-color:map-get($dark-colors, Very Dark Grayish Blue1);
-                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
-                }
-                .items-left{
-                    @include font-color(map-get($dark-colors,Light Grayish Blue2),nth($fallback-colors-dark,4));
                 }
           }
           .checkbox-round{
@@ -125,9 +124,9 @@ $fallback-colors-dark: (
      form {
         #form-body{
               #container-enter-task{
-                background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
+                background-color:lighten(map-get($light-colors, Very Light Grayish Blue),4);
                 div,#enter-task{
-                  background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
+                  background-color:lighten(map-get($light-colors, Very Light Grayish Blue),4);
                 }
                 #enter-task,::placeholder{
                   @include font-color(map-get($dark-colors,Very Dark Blue),nth($fallback-colors-dark,1));
@@ -137,18 +136,17 @@ $fallback-colors-dark: (
               #all-tasks{
                 div,input,textarea{
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
-                  @include font-color(map-get($dark-colors,Very Dark Blue),nth($fallback-colors-dark,1));
+                  @include font-color(map-get($dark-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
                 }
                 .bottom-hr{
                   color:white;
                 }
               }
+              .items-left,ul button,#mobile-clear{
+                  @include font-color(map-get($light-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
+              }
               .button-parent,.button-parent > * {
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
-                  @include font-color(map-get($light-colors,Very Dark Grayish Blue),nth($fallback-colors-dark,5));
-              }
-              .items-left,ul button{
-                  @include font-color(map-get($light-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
               }
         }
         .checkbox-round{
@@ -283,8 +281,6 @@ main{
               outline: none;
               cursor: pointer;
               &:hover{
-                  //background: linear-gradient(white, white) padding-box,
-                  //linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
                   border-radius: 50em;
                   border: 2px solid transparent;
               }

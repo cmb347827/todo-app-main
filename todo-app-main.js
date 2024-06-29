@@ -301,7 +301,24 @@ darkBtn.addEventListener('click',()=>{  //has hide.
 
 $(window).on('load',function(){
     clearLocalStorage();
-	  updateTaskContainer(taskData);
-    Sortable.create(tasksDiv);
+    Sortable.create(tasksDiv,{
+      group: "TODO",
+      options: {
+        animation: 100,
+        draggable: "#all-tasks div input label textarea button",
+        handle: "#all-tasks div input label textarea button",
+        sort: true,
+        filter: ".sortable-disabled",
+        chosenClass: "active",
+        onSort: function (/**Event*/evt) {
+          orderList(evt.oldIndex, evt.newIndex);
+        },
+      },
+      
+    });
+      
+
+    
+    updateTaskContainer(taskData);
     
 });
