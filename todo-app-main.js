@@ -20,7 +20,32 @@ const errBlank= document.getElementById('blank-error');
 const mobileClear=document.getElementById('mobile-clear');
 const largescreenClear=document.getElementById('largescreen-clear');
 
-let taskData = JSON.parse(localStorage.getItem("tasks")) || [];
+let taskData = JSON.parse(localStorage.getItem("tasks")) || [{
+          taskId: Date.now(),
+          task: 'Complete online JS course',
+          checked: true,
+        },{
+          taskId: Date.now(),
+          task: 'Jog around the park 3x',
+          checked: false,
+        },{
+          taskId: Date.now(),
+          task: '10 minute meditation',
+          checked: false,
+        },{
+          taskId: Date.now(),
+          task: 'read for 1 hour',
+          checked: false,
+        },{
+          taskId: Date.now(),
+          task: 'pick up groceries',
+          checked: false,
+        },{
+          taskId: Date.now(),
+          task: 'complete todo app on frontend mentor',
+          checked: false,
+        }
+];
 let activeTasks=  [];
 let completedTasks=  [];
 
