@@ -81,7 +81,7 @@ function loadDefault(){
           taskData.unshift(newTask);
           localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
           //update the shown list with the new task added (taskData)
-          updateTaskContainer(taskData);
+          //updateTaskContainer(taskData);
     });
 }
 
@@ -345,6 +345,7 @@ darkBtn.addEventListener('click',()=>{  //has hide.
 
 $(window).on('load',function(){
     clearLocalStorage();
+    taskData=[];
     loadDefault();
 
     let items = document.querySelector('#all-tasks');  
