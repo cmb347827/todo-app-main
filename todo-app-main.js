@@ -73,15 +73,13 @@ function loadDefault(){
     defaultTasks.forEach(task=>{
           //create a new task object
           const newTask ={
-              taskId: Date.now(),
+              taskId: uuidv4(),
               task: task.task,
               checked: task.checked,
           }
           //add the new task to the taskData array
           taskData.unshift(newTask);
           localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
-          //update the shown list with the new task added (taskData)
-          //updateTaskContainer(taskData);
     });
 }
 
@@ -102,7 +100,7 @@ newTaskTextArea.addEventListener('keydown', (event) => {
         if(newTaskValue){
             //create a new task object
             const newTask ={
-                taskId: Date.now(),
+                taskId: uuidv4(),
                 task: newTaskValue,
                 checked: false,
             }
@@ -128,8 +126,6 @@ function getInputArray(which){
   const remainderArray=taskData.filter(which); 
   if(remainderArray){
      return remainderArray;
-  }else{
-    
   }
 }
 
@@ -151,7 +147,7 @@ function taskActions(key,which,arr){
 function updateTask(event){
    //update taskData with the newly updated task when once entered task value changes. 
    taskData.forEach((task)=>{
-        if(task.taskId===Number(event.currentTarget.parentElement.id)){
+        if(task.taskId===event.currentTarget.parentElement.id){
             task.task = event.currentTarget.value;
         }
    });
@@ -161,24 +157,26 @@ function updateTask(event){
 function setRemoveChecked(event){
     //const siblingList =event.currentTarget.parentElement.children;
     // const textarea =siblingList[2];
-    
     //deals with checking/unchecking a task  and will update activeTasks or completedTasks once active or completed buttons are clicked as checked attribute is used.
     taskData.forEach((task)=>{
-        if(task.taskId===Number(event.currentTarget.parentElement.id)){
-            //found the current checked/unchecked task in taskData
+        //console.log('task',task.task,'parent id type',typeof event.currentTarget.parentElement.id, ' taskid type', typeof task.taskId);
+        //loaded uv4 string string
+        //entertask date.now  number Number. >> uv4  string string no Number.
+        if(task.taskId===event.currentTarget.parentElement.id){    
+              //found the current checked/unchecked task in taskData
+              if(task.checked){
+                //task was checked, uncheck it
+                (event.currentTarget).setAttribute('checked',false); 
+                //textarea.setAttribute('style','text-decoration-line:none'); 
+                task.checked=false;
+              }else{
+                //task was unchecked, check it.
+                //set the checked inputs check property in taskData (task) to checked
+                (event.currentTarget).setAttribute('checked',true);
+                //textarea.setAttribute('style','text-decoration-line:line-through');
+                task.checked=true;
+              }
             
-            if(task.checked){
-               //task was checked, uncheck it
-               (event.currentTarget).setAttribute('checked',false); 
-               //textarea.setAttribute('style','text-decoration-line:none'); 
-               task.checked=false;
-            }else{
-               //task was unchecked, check it.
-               //set the checked inputs check property in taskData (task) to checked
-               (event.currentTarget).setAttribute('checked',true);
-               //textarea.setAttribute('style','text-decoration-line:line-through');
-               task.checked=true;
-            }
         }
     });
     localStorage.setItem('tasks', JSON.stringify(taskData));
@@ -191,7 +189,7 @@ function setRemoveChecked(event){
 
 function deleteTask(e){
    //delete the task (when x is clicked to right of task)
-   taskData= taskData.filter(task=>!(task.taskId===Number(e.currentTarget.parentElement.id)));
+   taskData= taskData.filter(task=>!(task.taskId===e.currentTarget.parentElement.id));
    
    localStorage.setItem('tasks', JSON.stringify(taskData));
    //update shown list with the task deleted
@@ -222,6 +220,7 @@ completedBtn.addEventListener('click',(e)=>{
    updateTaskContainer(completedTasks);
    //now the 'completed' button should lose focus
    //e.currentTarget.blur();
+   //console.log('in completed',taskData);
 });
 
 const isChecked=(inputEl)=>inputEl.checked;
@@ -347,7 +346,7 @@ $(window).on('load',function(){
     clearLocalStorage();
     taskData=[];
     loadDefault();
-
+    
     let items = document.querySelector('#all-tasks');  
     Sortable.create(items, {      
         animation: 150,               

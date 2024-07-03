@@ -9,7 +9,9 @@ const newTaskTextArea = document.getElementById('enter-task');
 const itemsLeft=document.getElementById('js-items-left');
 const completedBtn = document.getElementById('js-completed-btn');
 const activeBtn = document.getElementById('js-active-btn');
-const clearCompleted = document.getElementById('js-delete-completed-btn');
+/*const clearCompletedNodeList = document.getElementsByClassName('js-delete-completed-btn');
+const clearCompleted = Array.from(clearCompletedNodeList);*/
+
 const allBtn=document.getElementById('js-all-btn');
 const lightBtn=document.getElementById('js-light-btn');
 const darkBtn = document.getElementById('js-dark-btn');
@@ -38,6 +40,50 @@ function uuidv4() {
 	);
 }
 
+let defaultTasks =[
+      {
+        taskId: '',
+        task: 'Complete online JS course',
+        checked: true,
+      },{
+        taskId: '',
+        task: 'Jog around the park 3x',
+        checked: false,
+      },{
+        taskId: '',
+        task: '10 minute meditation',
+        checked: false,
+      },{
+        taskId: '',
+        task: 'read for 1 hour',
+        checked: false,
+      },{
+        taskId: '',
+        task: 'pick up groceries',
+        checked: false,
+      },{
+        taskId: '',
+        task: 'complete todo app on frontend mentor',
+        checked: false,
+      }
+]
+
+function loadDefault(){
+    defaultTasks= defaultTasks.reverse();
+    defaultTasks.forEach(task=>{
+          //create a new task object
+          const newTask ={
+              taskId: uuidv4(),
+              task: task.task,
+              checked: task.checked,
+          }
+          //add the new task to the taskData array
+          taskData.unshift(newTask);
+          localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
+          //update the shown list with the new task added (taskData)
+          //updateTaskContainer(taskData);
+    });
+}
 
 newTaskTextArea.addEventListener('keydown', (event) => {
   const regex = /\S/;
@@ -113,23 +159,34 @@ function updateTask(event){
 }
 
 function setRemoveChecked(event){
+    //const siblingList =event.currentTarget.parentElement.children;
+    // const textarea =siblingList[2];
     //deals with checking/unchecking a task  and will update activeTasks or completedTasks once active or completed buttons are clicked as checked attribute is used.
+    const convertNum = Number(event.currentTarget.parentElement.id);
+    let which;
     taskData.forEach((task)=>{
-        if(task.taskId===Number(event.currentTarget.parentElement.id)){
-            //found the current checked/unchecked task in taskData
-            if(task.checked){
-               //task was checked, uncheck it
-               (event.currentTarget).setAttribute('checked',false);
-               (event.currentTarget).setAttribute('aria-checked',false);         
-               task.checked=false;
-            }else{
-               //task was unchecked, check it.
-               //set the checked inputs check property in taskData (task) to checked
-               (event.currentTarget).setAttribute('checked',true);
-               (event.currentTarget).setAttribute('aria-checked',true);
-               task.checked=true;
-            }
+        if(typeof task.taskId==='number'){ //id is from preloaded data use of uuidv4() as time.now() returned same ids
+            which=convertNum;
+        }else {
+            which=event.currentTarget.parentElement.id;
         }
+        if(task.taskId===which){
+              //found the current checked/unchecked task in taskData
+              if(task.checked){
+                //task was checked, uncheck it
+                (event.currentTarget).setAttribute('checked',false); 
+                //textarea.setAttribute('style','text-decoration-line:none'); 
+                task.checked=false;
+              }else{
+                //task was unchecked, check it.
+                //set the checked inputs check property in taskData (task) to checked
+                (event.currentTarget).setAttribute('checked',true);
+                //textarea.setAttribute('style','text-decoration-line:line-through');
+                task.checked=true;
+              }
+        }
+    
+        
     });
     localStorage.setItem('tasks', JSON.stringify(taskData));
     //displays the number of active tasks
@@ -138,13 +195,19 @@ function setRemoveChecked(event){
 }
 
 
-/*[...document.querySelectorAll('.delete-task')].forEach(btn => btn.addEventListener('click',function (e) {
-  
-}))*/
+
 function deleteTask(e){
+  const convertNum = Number(e.currentTarget.parentElement.id);
+  
    //delete the task (when x is clicked to right of task)
-   taskData= taskData.filter(task=>!(task.taskId===Number(e.currentTarget.parentElement.id)));
-   
+   //taskData= taskData.filter(task=>!(task.taskId===Number(e.currentTarget.parentElement.id)));
+   taskData=taskData.filter((task)=>{
+        if(typeof task.taskId==='number'){
+           return !(task.taskId===convertNum);
+        }else{
+           return !(task.taskId===e.currentTarget.parentElement.id);
+        }
+   });
    localStorage.setItem('tasks', JSON.stringify(taskData));
    //update shown list with the task deleted
    updateTaskContainer(taskData);
@@ -154,17 +217,17 @@ function deleteTask(e){
 
 allBtn.addEventListener('click',(e)=>{
    //the 'all' button was clicked, set it's aria-selected 
-   e.currentTarget.setAttribute('aria-selected','true');
+   //e.currentTarget.setAttribute('aria-selected','true');
    //update list to show all tasks in taskData
    updateTaskContainer(taskData);
    //now the 'all' button should lose focus
-   e.currentTarget.blur();
+   //e.currentTarget.blur();
 });
 
 
 completedBtn.addEventListener('click',(e)=>{
    ////the 'completed' button was clicked, set it's aria-selected 
-   e.currentTarget.setAttribute('aria-selected','true');
+   //e.currentTarget.setAttribute('aria-selected','true');
    //set completedTasks to empty array , to avoid adding to end from possible earlier getItem calls.
    completedTasks=[];
    //check to see which tasks are completed and update completedTasks
@@ -173,7 +236,8 @@ completedBtn.addEventListener('click',(e)=>{
    //update list shown with newly fetched completedTasks
    updateTaskContainer(completedTasks);
    //now the 'completed' button should lose focus
-   e.currentTarget.blur();
+   //e.currentTarget.blur();
+   //console.log('in completed',taskData);
 });
 
 const isChecked=(inputEl)=>inputEl.checked;
@@ -181,7 +245,7 @@ const isNotChecked=(inputEl)=>!inputEl.checked;
 
 activeBtn.addEventListener('click',(e)=>{
     //the 'active' button was clicked, set it's aria-selected 
-    e.currentTarget.setAttribute('aria-selected','true');
+    //e.currentTarget.setAttribute('aria-selected','true');
     //set activeTasks to empty array , to avoid adding to end from possible earlier getItem calls.
     activeTasks=[];
     //check to see which tasks are active and update activeTasks
@@ -190,7 +254,7 @@ activeBtn.addEventListener('click',(e)=>{
     //update list shown with newly fetched activeTasks
     updateTaskContainer(activeTasks);
     //now the 'active' button should lose focus
-    e.currentTarget.blur();
+    //e.currentTarget.blur();
 });
 
 const clearTodo=()=>{
@@ -202,9 +266,9 @@ const clearTodo=()=>{
     localStorage.setItem("tasks", JSON.stringify(taskData));
 }
 
-clearCompleted.addEventListener('click',(e)=>{
+[...document.querySelectorAll('.js-delete-completed-btn')].forEach(btn=>btn.addEventListener('click',(e)=>{
     //the 'clear completed' button was clicked, set it's aria-selected
-    e.currentTarget.setAttribute('aria-selected','true');
+    //e.currentTarget.setAttribute('aria-selected','true');
     //set completedTasks to empty array first
     completedTasks=[];
     localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));
@@ -213,44 +277,32 @@ clearCompleted.addEventListener('click',(e)=>{
     //update list shown with completed removed
     updateTaskContainer(completedTasks);
     //'clear completed' button should lose focus.
-    e.currentTarget.blur();
-});
+    //e.currentTarget.blur();
+}));
 
 const updateTaskContainer = (data) => {
     //displays the number of active tasks
     const activeArr= taskData.filter(isNotChecked);
     itemsLeft.textContent = activeArr.length;
+    
 
-    const windowWidth= window.innerWidth;
-    /*if(windowWidth > 521){
-      if($(largescreenClear).hasClass('hide')){
-        $(largescreenClear).removeClass('hide');
-        $(mobileClear).addClass('hide');
-        $(largescreenClear).addClass('show');
-      }
-    }/*else if(windowWidth<=521){
-      if($(mobileClear).hasClass('hide')){
-        $(mobileClear).removeClass('hide');
-        $(largescreenClear).addClass('hide');
-        $(mobileClear).addClass('show');
-      }
-    }*/
-
-    let which;
+    let which; let whichStyle;
     tasksDiv.innerHTML = "";
     if(data){
       data.forEach(
           ({ taskId, task ,checked}) => {
                    if(checked){
+                    //whichStyle='text-decoration-line:line-through';
                     which='checked';
                    }else{
+                    whichStyle={};
                     which='';
                    }
                   (tasksDiv.innerHTML += `
-                        <div class="d-flex align-items-center" id="${taskId}">
-                          <input onchange='setRemoveChecked(event)' class="form-check-input" type="checkbox" ${which} >
+                        <div class="d-flex align-items-center ps-1 pt-1" id="${taskId}">
+                          <input onchange='setRemoveChecked(event)' class="form-check-input checkbox-round" type="checkbox" ${which} >
                           <label class='visually-hidden'>Check or uncheck task</label>
-                          <textarea onchange='updateTask(event)' class="form-control pt-4">${task}</textarea>
+                          <textarea style='${whichStyle}' onchange='updateTask(event)' class="form-control">${task}</textarea>
                           <button onclick='deleteTask(event)' type='button' class='delete-task btn'><svg  class='cross' xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></button>
                         </div>
                         <hr class='bottom-hr'>
@@ -261,6 +313,7 @@ const updateTaskContainer = (data) => {
     }
     
 };
+
 lightBtn.addEventListener('click',()=>{
     if($(darkBtn).hasClass('hide')){
       $(darkBtn).removeClass('hide');
@@ -305,9 +358,29 @@ darkBtn.addEventListener('click',()=>{  //has hide.
        darkBtn.setAttribute('aria-disabled','true');
 });
 
+
 $(window).on('load',function(){
     clearLocalStorage();
-	  updateTaskContainer(taskData);
-    Sortable.create(tasksDiv);
+    taskData=[];
+    loadDefault();
     
+    let items = document.querySelector('#all-tasks');  
+    Sortable.create(items, {      
+        animation: 150,               
+        group: "tasks",      
+        store: {          
+           set:(sortable) => {              
+              const order = sortable.toArray();              
+              localStorage.setItem(sortable.options.group.name, order.join('|'));          
+           },          
+           //get list order       
+           get: (sortable) => {              
+             const order = localStorage.getItem(sortable.options.group.name);              
+             return order ? order.split('|') : [];          
+            }      
+        }  
+    });  
+    
+    updateTaskContainer(taskData);
+  
 });
