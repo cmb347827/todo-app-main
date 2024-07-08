@@ -83,32 +83,33 @@ function loadDefault(){
           localStorage.setItem("tasks", JSON.stringify(taskData));  //change to saveToStorage();
     });
 }
-
-const setView=(currentview)=>{
+/*const getData=()=>{
+  if(viewType==='activeTasks'){
+      return activeTasks;
+  }else if(viewType==='completedTasks'){
+      return completedTasks;
+  }else if(viewType==='taskData') {
+      return taskData;
+  }
+};*/
+const setData=(currentview)=>{
     viewType=currentview;
 };
 
 
-const addTaskByView=(newtask)=>{
-    //add the new task to the taskData array
-    taskData.unshift(newtask);
-    localStorage.setItem("tasks", JSON.stringify(taskData));
-
-    //viewType is either default taskData or set by the user clicking 'active', 'completed', and 'all' buttons.
-    if(viewType==='activeTasks'){
-        activeTasks.unshift(newtask);
+const addTaskByView=()=>{
+    const currentview= getData();
+    if(currentview==='activeTasks'){
         localStorage.setItem('active-tasks',JSON.stringify(activeTasks));
         updateTaskContainer(activeTasks);
-    }else if(viewType==='completedTasks'){
-        newtask.checked=true;
-        completedTasks.unshift(newtask);
+    }else if(currentview==='completedTasks'){
         localStorage.setItem('completed-tasks',JSON.stringify(completedTasks));
         updateTaskContainer(completedTasks);
-    }else if(viewType==='taskData'){                          
+    }else if(currentview==='taskData'){
+        localStorage.setItem("tasks", JSON.stringify(taskData));                                      
         updateTaskContainer(taskData); 
     }
 }
-
 newTaskTextArea.addEventListener('keydown', (event) => {
   const regex = /\S/;
   //prevents the user from entering nothing 
@@ -130,10 +131,14 @@ newTaskTextArea.addEventListener('keydown', (event) => {
                 task: newTaskValue,
                 checked: false,
             }
+            //add the new task to the taskData array
+            taskData.unshift(newTask);
             //clear the #enter-task textarea
             newTaskTextArea.value='';
-            //add the new task, works whether user is viewing the 'active' tasks, 'completed' tasks, or all tasks.
-            addTaskByView(newTask);
+            addTaskByView();
+            //localStorage.setItem("tasks", JSON.stringify(taskData));                                      //update with viewtype if , if else etc
+            //update the shown list with the new task added (either taskData,active, or completed)
+            //updateTaskContainer(taskData);                                                               //update with viewtype 
         }
   }else if(event.key ==='Enter' && !passed){
      //the user has pressed enter while the #enter-task textarea is blank, show an error message.
@@ -167,14 +172,18 @@ function taskActions(key,which,arr){
     }
     
 }
+
 function updateTask(event){
-   //update taskData(all), plus or active or completed with the newly updated task when once entered task value changes. 
-    taskData.forEach((task)=>{
-        if(task.taskId===event.currentTarget.parentElement.id){
-           task.task = event.currentTarget.value;
-        }
-    });
-    if(viewType==='activeTasks'){
+   //update taskData with the newly updated task when once entered task value changes. 
+   localStorage.setItem("tasks", JSON.stringify(taskData));
+   if(viewType==='taskData'){
+        taskData.forEach((task)=>{
+              if(task.taskId===event.currentTarget.parentElement.id){
+                  task.task = event.currentTarget.value;
+              }
+        });
+                                                                                    //update with viewtype  if, if else etc
+   } else if(viewType==='activeTasks'){
         activeTasks.forEach((task)=>{
           if(task.taskId===event.currentTarget.parentElement.id){
              task.task = event.currentTarget.value;
@@ -189,29 +198,34 @@ function updateTask(event){
         });
         localStorage.setItem("completed-tasks", JSON.stringify(completedTasks)); 
    }
-   localStorage.setItem("tasks", JSON.stringify(taskData));
 }
 
 function setRemoveChecked(event){
+    //const siblingList =event.currentTarget.parentElement.children;
+    // const textarea =siblingList[2];
     //deals with checking/unchecking a task  and will update activeTasks or completedTasks once active or completed buttons are clicked as checked attribute is used.
     taskData.forEach((task)=>{
-    
+        //console.log('task',task.task,'parent id type',typeof event.currentTarget.parentElement.id, ' taskid type', typeof task.taskId);
+        //loaded uv4 string string
+        //entertask date.now  number Number. >> uv4  string string no Number.
         if(task.taskId===event.currentTarget.parentElement.id){    
               //found the current checked/unchecked task in taskData
               if(task.checked){
                 //task was checked, uncheck it
                 (event.currentTarget).setAttribute('checked',false); 
+                //textarea.setAttribute('style','text-decoration-line:none'); 
                 task.checked=false;
               }else{
                 //task was unchecked, check it.
                 //set the checked inputs check property in taskData (task) to checked
                 (event.currentTarget).setAttribute('checked',true);
+                //textarea.setAttribute('style','text-decoration-line:line-through');
                 task.checked=true;
               }
             
         }
     });
-    localStorage.setItem('tasks', JSON.stringify(taskData));
+    localStorage.setItem('tasks', JSON.stringify(taskData));                                       //viewtype????
     //displays the number of active tasks
     const activeArr= taskData.filter(isNotChecked);
     itemsLeft.textContent = activeArr.length;
@@ -221,60 +235,70 @@ function setRemoveChecked(event){
 
 function deleteTask(e){
    //delete the task (when x is clicked to right of task)
-   //works whether the user is viewing all tasks, 'active' tasks, or 'completed' tasks
-   taskData= taskData.filter(task=>!(task.taskId===e.currentTarget.parentElement.id));
-   localStorage.setItem('tasks', JSON.stringify(taskData));  
-   if(viewType==='taskData'){                                     
-      //update shown list with the task deleted
-      updateTaskContainer(taskData);                                                                 
-    } else if(viewType==='activeTasks'){
-        activeTasks= activeTasks.filter(task=>!(task.taskId===e.currentTarget.parentElement.id));
-        localStorage.setItem('active-tasks', JSON.stringify(activeTasks));                                       
-        //update shown list with the task deleted
-        updateTaskContainer(activeTasks); 
-    } else if(viewType==='completedTasks'){
-        completedTasks= completedTasks.filter(task=>!(task.taskId===e.currentTarget.parentElement.id));
-        localStorage.setItem('completed-tasks', JSON.stringify(completedTasks));                                       
-        //update shown list with the task deleted
-        updateTaskContainer(completedTasks); 
-    }
+   if(viewType==='taskData'){
+       taskData= taskData.filter(task=>!(task.taskId===e.currentTarget.parentElement.id));
+       localStorage.setItem('tasks', JSON.stringify(taskData));                                       //viewtype get, if , if else , etc
+       //update shown list with the task deleted
+       updateTaskContainer(taskData);                                                                 //viewtype get  if, if else, etc
+   } else if(viewType==='activeTasks'){
+       activeTasks= activeTasks.filter(task=>!(task.taskId===e.currentTarget.parentElement.id));
+       localStorage.setItem('active-tasks', JSON.stringify(activeTasks));                                       //viewtype get, if , if else , etc
+       //update shown list with the task deleted
+       updateTaskContainer(activeTasks); 
+   } else if(viewType==='completedTasks'){
+       completedTasks= completedTasks.filter(task=>!(task.taskId===e.currentTarget.parentElement.id));
+       localStorage.setItem('completed-tasks', JSON.stringify(completedTasks));                                       //viewtype get, if , if else , etc
+       //update shown list with the task deleted
+       updateTaskContainer(competedTasks); 
+   }
 }
   
 
 
 allBtn.addEventListener('click',(e)=>{
-   //setView sets viewType to the current tasks, in this case taskData or after the user presses the all button.
-   setView('taskData');
+   //the 'all' button was clicked, set it's aria-selected 
+   //e.currentTarget.setAttribute('aria-selected','true');
+   //set viewtype to taskdata.
+   setData('taskData');                                                                           //set viewtype to taskdata.
    //update list to show all tasks in taskData
-   updateTaskContainer(taskData);
+   updateTaskContainer(taskData);                                                               
+   //now the 'all' button should lose focus
+   //e.currentTarget.blur();
 });
 
 
 completedBtn.addEventListener('click',(e)=>{
-   //setView sets viewType of completedTasks as the user pressed the 'completed' button
-   setView('completedTasks');
+    setData('completedTasks');
+   ////the 'completed' button was clicked, set it's aria-selected 
+   //e.currentTarget.setAttribute('aria-selected','true');
    //set completedTasks to empty array , to avoid adding to end from possible earlier getItem calls.
    completedTasks=[];
    //check to see which tasks are completed and update completedTasks
-   taskActions('completed-tasks',isChecked,completedTasks);
+   taskActions('completed-tasks',isChecked,completedTasks);                                      //set viewtype to completedtask
    completedTasks=JSON.parse(localStorage.getItem("completed-tasks"));
    //update list shown with newly fetched completedTasks
-   updateTaskContainer(completedTasks);
+   updateTaskContainer(completedTasks);                                            
+   //now the 'completed' button should lose focus
+   //e.currentTarget.blur();
+   //console.log('in completed',taskData);
 });
 
 const isChecked=(inputEl)=>inputEl.checked;
 const isNotChecked=(inputEl)=>!inputEl.checked;
 
 activeBtn.addEventListener('click',(e)=>{
-    //setView sets viewType to activeTasks as the user pressed the 'active' button
-    setView('activeTasks');
+    setData('activeTasks');
+    //the 'active' button was clicked, set it's aria-selected 
+    //e.currentTarget.setAttribute('aria-selected','true');
     //set activeTasks to empty array , to avoid adding to end from possible earlier getItem calls.
     activeTasks=[];
     //check to see which tasks are active and update activeTasks
-    taskActions('active-tasks',isNotChecked,activeTasks);
+    taskActions('active-tasks',isNotChecked,activeTasks);                                         //set viewtype to activetasks
     activeTasks = JSON.parse(localStorage.getItem("active-tasks"));
     //update list shown with newly fetched activeTasks
-    updateTaskContainer(activeTasks);
+    updateTaskContainer(activeTasks);                                                                 
+    //now the 'active' button should lose focus
+    //e.currentTarget.blur();
 });
 
 const clearTodo=()=>{
@@ -287,23 +311,30 @@ const clearTodo=()=>{
 }
 
 [...document.querySelectorAll('.js-delete-completed-btn')].forEach(btn=>btn.addEventListener('click',(e)=>{
-    //setView sets viewType to completedTasks as the user pressed the 'Clear Completed' button and should show the empty completed on updateTaskContainer.
-    setView('completedTasks');
+    //the 'clear completed' button was clicked, set it's aria-selected
+    //e.currentTarget.setAttribute('aria-selected','true');
+    setData('completedTasks')
     //set completedTasks to empty array first
     completedTasks=[];
-    localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));
+    localStorage.setItem('completed-tasks', JSON.stringify('completed-tasks'));                     //set viewType to compltedtask
     //in clearTodo() filter out checked tasks and update taskData.
     clearTodo();
     //update list shown with completed removed
-    updateTaskContainer(completedTasks);
+    updateTaskContainer(completedTasks);                                           
+    //'clear completed' button should lose focus.
+    //e.currentTarget.blur();
 }));
+
 
 const updateTaskContainer = (data) => {
     //displays the number of active tasks
     const activeArr= taskData.filter(isNotChecked);
     itemsLeft.textContent = activeArr.length;
     
-
+    //keeps track of which 'view' the user is seeing now :active, all(taskData), or completed when the user deletes or adds a task.
+    //data= getView(data,view);
+    
+    //which updates if the input is checked or not
     let which; let whichStyle;
     tasksDiv.innerHTML = "";
     if(data){
