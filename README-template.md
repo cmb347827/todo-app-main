@@ -40,8 +40,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github]()
-- Live Site URL: [Live Github]()
+- Solution URL: [Github](https://github.com/cmb347827/todo-app-main)
+- Live Site URL: [Live Github](https://cmb347827.github.io/todo-app-main/)
 
 ## My process
 
@@ -57,9 +57,8 @@ Users should be able to:
 ### What I learned
   - Had the purple background set for the main element at first, but I could not get that to look right as it kept growing with the form content. When I changed it to apply to the header element it worked.
   -I fulfilled all requirements , including the bonus. I also added an error message when a user tries to add a blank task, as well as the ability to save updated tasks that are already in the list, also number of 'items left' gets updated when a user checks/unchecks a task, also completed tasks strike through immediately.
-  -for the checkbox tickmark I could apply a stackoverflow post (see link)
   - I learned the usefull use of js filter()
-  - I had followed also an Amazon tutorial project which helped with localStorage use understanding.
+  - I have also followed an Amazon tutorial project which helped with localStorage use understanding (project is also in my github profile)
   - At first I had to use JS to add the striked out text for completed tasks (see WhichStyle code in updatetaskcontainer and textarea code in setRemoveChecked ), but figured out how to do this using SCSS only (lines 70-80)
   - I needed to apply the gradient border for the `input[type='checkbox']` on hover, and remembered that I used this before in a previous project.
     I could use the same technique here.
@@ -70,6 +69,7 @@ Users should be able to:
 - Daily tutorials and projects in HTML5, CSS3, Javascript, Bootstrap, Sass/SCSS. For now, in time I will go re-learn React ect.
 
 ### Useful resources
+[]
 [how to make checkboxes round](https://stackoverflow.com/questions/29617200/how-to-make-checkboxes-rounded)
 [gradient borders](https://codyhouse.co/nuggets/css-gradient-borders)
 [drap drop in sortable.js](https://www.ma-no.org/en/programming/javascript/sorting-elements-with-sortablejs-and-storing-them-in-localstorage)
