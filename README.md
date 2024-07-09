@@ -69,7 +69,6 @@ Users should be able to:
 - Daily tutorials and projects in HTML5, CSS3, Javascript, Bootstrap, Sass/SCSS. For now, in time I will go re-learn React ect.
 
 ### Useful resources
-[]
 [how to make checkboxes round](https://stackoverflow.com/questions/29617200/how-to-make-checkboxes-rounded)
 [gradient borders](https://codyhouse.co/nuggets/css-gradient-borders)
 [drap drop in sortable.js](https://www.ma-no.org/en/programming/javascript/sorting-elements-with-sortablejs-and-storing-them-in-localstorage)
