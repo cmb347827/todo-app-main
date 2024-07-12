@@ -63,6 +63,8 @@ Users should be able to:
   - I needed to apply the gradient border for the `input[type='checkbox']` on hover, and remembered that I used this before in a previous project.
     I could use the same technique here.
   - I wasn't sure if it was the idea that dragging and dropping would also save the new order, but drag/drop works at least. I tried saving drag/drop with a tutorial , but it does not seem to work.
+  - I learned about e.currentTarget.parentElement from a stackoverflow post (can't find the post as I forgot to bookmark it) , and that was most helpful for me being able to finish this project.  I'm also now learning in a freecodecamp tutorial about event.target/e.target , which seems even simpler.
+   
 
 ### Continued development
 
