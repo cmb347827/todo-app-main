@@ -66,18 +66,18 @@ $fallback-colors-dark: (
     body{
       @include bg-color(map-get($dark-colors,Very Dark Grayish Blue2),nth($fallback-colors-dark,7));
        form {
-          #form-body{
-                #container-enter-task{
+          .form-body{
+               .container-enter-task{
                   background-color:map-get($dark-colors, Very Dark Grayish Blue1);
-                  div,#enter-task{
+                  div,.enter-task{
                     background-color:map-get($dark-colors, Very Dark Grayish Blue1);
                   }
-                  #enter-task,::placeholder{
+                  .enter-task,::placeholder{
                     @include font-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-dark,1));
                   }
                   
                 }
-                #all-tasks{
+                .all-tasks{
                   div,input,textarea{
                     background-color:map-get($dark-colors, Very Dark Grayish Blue1);
                     @include font-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-dark,1));
@@ -122,18 +122,18 @@ $fallback-colors-dark: (
   body{
     @include bg-color(map-get($light-colors,Very Light Gray),nth($fallback-colors-dark,1));
      form {
-        #form-body{
-              #container-enter-task{
+        .form-body{
+              .container-enter-task{
                 background-color:lighten(map-get($light-colors, Very Light Grayish Blue),4);
-                div,#enter-task{
+                div,.enter-task{
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),4);
                 }
-                #enter-task,::placeholder{
+                .enter-task,::placeholder{
                   @include font-color(map-get($dark-colors,Very Dark Blue),nth($fallback-colors-dark,1));
                 }
               
               }
-              #all-tasks{
+              .all-tasks{
                 div,input,textarea{
                   background-color:lighten(map-get($light-colors, Very Light Grayish Blue),5);
                   @include font-color(map-get($dark-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
@@ -142,7 +142,7 @@ $fallback-colors-dark: (
                   color:white;
                 }
               }
-              .items-left,ul button,#mobile-clear{
+              .items-left,ul button,.mobile-clear{
                   @include font-color(map-get($light-colors,Dark Grayish Blue),nth($fallback-colors-dark,4));
               }
               .button-parent,.button-parent > * {
@@ -235,29 +235,29 @@ body{
 
 
 main{ 
-      #mobile-clear{
+      .mobile-clear{
         display:block;
       }
       @media screen and (min-width: 768px) {
-         #desktop-clear  { display: block; }
-         #mobile-clear { display: none; }
+         .desktop-clear  { display: block; }
+         .mobile-clear { display: none; }
       }
       .grayish-font{
         color: map-get($dark-colors, Light Grayish Blue1);
       }
       form{
           padding:0;
-          #form-body,#form-header{
+          .form-body,.form-header{
             width: 90%;
             max-width:992px;
             @include margin(0 auto);
             padding:0;
             
           }
-          #form-header{
+          .form-header{
             height: 15rem;
           }
-          #form-body{
+          .form-body{
             position:relative;
             top:-3rem;
             .task,textarea,ul,#enter-task {
@@ -297,7 +297,7 @@ main{
 }
 
 
-#bottom-footer {
+.bottom-footer {
   .attribution {
     font-size: $font_size-8;
     text-align: center;
