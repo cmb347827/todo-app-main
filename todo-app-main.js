@@ -378,7 +378,7 @@ darkBtn.addEventListener('click',()=>{  //has hide.
 
 
 $(window).on('load',function(){
-    clearLocalStorage();
+    //clearLocalStorage();
     taskData=[];
     loadDefault();
     
